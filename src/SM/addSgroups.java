@@ -5,6 +5,10 @@
  */
 package SM;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Thilona
@@ -34,15 +38,15 @@ public class addSgroups extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        semester = new javax.swing.JTextField();
+        programme = new javax.swing.JComboBox<>();
+        groupno = new javax.swing.JComboBox<>();
+        subgroupno = new javax.swing.JComboBox<>();
+        groupid = new javax.swing.JTextField();
+        subgroupid = new javax.swing.JTextField();
+        generateid = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
+        save = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
@@ -70,36 +74,128 @@ public class addSgroups extends javax.swing.JFrame {
 
         jLabel7.setText("Sub Group ID");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 170, -1));
+        getContentPane().add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 170, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 170, -1));
+        programme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "IT", "CS" }));
+        programme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                programmeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(programme, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 170, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 170, -1));
+        groupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        getContentPane().add(groupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 170, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 170, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 170, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 170, -1));
+        subgroupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        subgroupno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subgroupnoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(subgroupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 170, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Generate IDs");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
+        groupid.setEditable(false);
+        getContentPane().add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 170, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Clear");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, -1, -1));
+        subgroupid.setEditable(false);
+        getContentPane().add(subgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 170, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Save");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, -1, -1));
+        generateid.setBackground(new java.awt.Color(0, 0, 0));
+        generateid.setForeground(new java.awt.Color(255, 255, 255));
+        generateid.setText("Generate IDs");
+        generateid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateidActionPerformed(evt);
+            }
+        });
+        getContentPane().add(generateid, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
+
+        clear.setBackground(new java.awt.Color(0, 0, 0));
+        clear.setForeground(new java.awt.Color(255, 255, 255));
+        clear.setText("Clear");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, -1, -1));
+
+        save.setBackground(new java.awt.Color(0, 0, 0));
+        save.setForeground(new java.awt.Color(255, 255, 255));
+        save.setText("Save");
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void programmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programmeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_programmeActionPerformed
+
+    private void subgroupnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subgroupnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subgroupnoActionPerformed
+
+    private void generateidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateidActionPerformed
+        if (semester.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Semester is empty");
+        } else if (programme.getSelectedItem().toString().equals("<-Select->")) {
+            JOptionPane.showMessageDialog(rootPane, "please select a program");
+        } else if (groupno.getSelectedItem().toString().equals("<-Select->")) {
+            JOptionPane.showMessageDialog(rootPane, "please select a group no");
+        } else if (subgroupno.getSelectedItem().toString().equals("<-Select->")) {
+            JOptionPane.showMessageDialog(rootPane, "please select a sub group no");
+        } else {
+            String semest = semester.getText();
+            String program = programme.getSelectedItem().toString();
+            String group = groupno.getSelectedItem().toString();
+            String subgroup = subgroupno.getSelectedItem().toString();
+            String groupid = semest + "." + program + "." + group;
+            String subgroupid = semest + "." + program + "." + subgroup;
+            this.groupid.setText(groupid);
+            this.subgroupid.setText(subgroupid);
+        }
+    }//GEN-LAST:event_generateidActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        clearFields();
+    }//GEN-LAST:event_clearActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        String semest = semester.getText();
+        String program = programme.getSelectedItem().toString();
+        String group = groupno.getSelectedItem().toString();
+        String subgroup = subgroupno.getSelectedItem().toString();
+        String groupid = this.groupid.getText();
+        String subgroupid = this.subgroupid.getText();
+        if (semest.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Semester is empty");
+        } else if (program.equals("<-Select->")) {
+            JOptionPane.showMessageDialog(rootPane, "Please select a program");
+        } else if (group.equals("<-Select->")) {
+            JOptionPane.showMessageDialog(rootPane, "Please select a group no");
+        } else if (subgroup.equals("<-Select->")) {
+            JOptionPane.showMessageDialog(rootPane, "Please select a sub group no");
+        } else if (groupid.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Please generate group id");
+        } else if (subgroupid.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Please generate sub group id");
+        } else {
+            try {
+                DB.DB.iud("insert into student_groups (semester, program, groupno, subgroupno, groups_id, sub_groups_id)values ('" + semest + "','" + program + "','" + group + "','" + subgroup + "','" + groupid + "','" + subgroupid + "')");
+                JOptionPane.showMessageDialog(rootPane, "Successfully inserted");
+                clearFields();
+            } catch (Exception ex) {
+                Logger.getLogger(addSgroups.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_saveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,12 +233,10 @@ public class addSgroups extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JButton clear;
+    private javax.swing.JButton generateid;
+    private javax.swing.JTextField groupid;
+    private javax.swing.JComboBox<String> groupno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -150,8 +244,19 @@ public class addSgroups extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox<String> programme;
+    private javax.swing.JButton save;
+    private javax.swing.JTextField semester;
+    private javax.swing.JTextField subgroupid;
+    private javax.swing.JComboBox<String> subgroupno;
     // End of variables declaration//GEN-END:variables
+
+    private void clearFields() {
+        semester.setText("");
+        programme.setSelectedIndex(0);
+        groupno.setSelectedIndex(0);
+        subgroupno.setSelectedIndex(0);
+        groupid.setText("");
+        subgroupid.setText("");
+    }
 }

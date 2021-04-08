@@ -32,7 +32,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         loadID();
         
     }
-    public void loadID(){
+    public void loadID(){  // load data to interface
              try {
             con = (Connection) DBconnection.getConnection();
             stmt = con.createStatement();
@@ -81,8 +81,11 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSelectID = new javax.swing.JComboBox<>();
         jSearchbtn = new javax.swing.JButton();
+        jDeletebtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(245, 242, 242));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -161,7 +164,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
                 jAddbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jAddbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 73, -1));
+        getContentPane().add(jAddbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 310, -1));
 
         jUpdatebtn.setBackground(new java.awt.Color(51, 51, 51));
         jUpdatebtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -172,9 +175,9 @@ public class WorkingDaysHours extends javax.swing.JFrame {
                 jUpdatebtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jUpdatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 73, -1));
+        getContentPane().add(jUpdatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 73, -1));
 
-        jResetbtn.setBackground(new java.awt.Color(204, 0, 51));
+        jResetbtn.setBackground(new java.awt.Color(153, 153, 153));
         jResetbtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jResetbtn.setForeground(new java.awt.Color(255, 255, 255));
         jResetbtn.setText("Reset");
@@ -195,6 +198,9 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         });
         getContentPane().add(jSelectID, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 249, 88, -1));
 
+        jSearchbtn.setBackground(new java.awt.Color(0, 0, 0));
+        jSearchbtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jSearchbtn.setForeground(new java.awt.Color(255, 255, 255));
         jSearchbtn.setText("Search");
         jSearchbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,6 +208,17 @@ public class WorkingDaysHours extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jSearchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, -1, -1));
+
+        jDeletebtn.setBackground(new java.awt.Color(255, 0, 0));
+        jDeletebtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jDeletebtn.setForeground(new java.awt.Color(255, 255, 255));
+        jDeletebtn.setText("Delete");
+        jDeletebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDeletebtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jDeletebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -216,7 +233,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
 
     private void jAddbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddbtnActionPerformed
         
-      
+      //add button
         String noWorkingDays = (String)jWorkingDay.getSelectedItem(); 
         int monday = 0;
         int tuesday  = 0;
@@ -355,10 +372,6 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         }
         
         
-        
-        
-        
-        
     }//GEN-LAST:event_jUpdatebtnActionPerformed
 
     private void jSelectIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelectIDActionPerformed
@@ -366,7 +379,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
     }//GEN-LAST:event_jSelectIDActionPerformed
 
     private void jSearchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchbtnActionPerformed
-        // TODO add your handling code here:
+        // search button
       String workdayid = jSelectID.getSelectedItem().toString();
           try{
               con = (Connection) DBconnection.getConnection();
@@ -441,6 +454,28 @@ public class WorkingDaysHours extends javax.swing.JFrame {
      
     }//GEN-LAST:event_jSearchbtnActionPerformed
 
+    private void jDeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDeletebtnActionPerformed
+        // Delete Button
+        String id = (String)jSelectID.getSelectedItem().toString();
+         try{
+              con = (Connection) DBconnection.getConnection();
+              stmt = con.createStatement();
+              String sql = "DELETE  FROM management_system.workingdays WHERE workingdays.workingDaysID ='"+id+"'";
+             
+              stmt.executeUpdate(sql);
+              JOptionPane.showMessageDialog(null, "Successfully Deleted");
+              setVisible(false);
+              new WorkingDaysHours().setVisible(true);
+              
+              
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(null, "unsuccess");
+              setVisible(false);
+              new WorkingDaysHours().setVisible(true);
+              e.printStackTrace();
+        }
+    }//GEN-LAST:event_jDeletebtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -478,6 +513,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAddbtn;
+    private javax.swing.JButton jDeletebtn;
     private javax.swing.JCheckBox jFriday;
     private javax.swing.JComboBox<String> jHours;
     private javax.swing.JLabel jLabel1;

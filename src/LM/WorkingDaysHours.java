@@ -7,8 +7,10 @@ package LM;
 
 import com.mysql.jdbc.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-import LM.DBconnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,8 +28,27 @@ public class WorkingDaysHours extends javax.swing.JFrame {
     
     public WorkingDaysHours() {
         initComponents();
+        DBconnection.getConnection();
+        loadID();
         
     }
+    public void loadID(){
+             try {
+            con = (Connection) DBconnection.getConnection();
+            stmt = con.createStatement();
+            String sql = "SELECT  workingdays.workingDaysID  FROM management_system.workingdays";
+            rs = stmt.executeQuery(sql);
+//            jSelectID.removeAllItems();
+            while (rs.next()) {
+              
+                jSelectID.addItem(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,8 +76,11 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jAddbtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jUpdatebtn = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jSelectID = new javax.swing.JComboBox<>();
+        jSearchbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -116,10 +140,10 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         jLabel4.setText("Working Time per Day");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, 20));
 
-        jHours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jHours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(jHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 80, -1));
 
-        jMinutes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" }));
+        jMinutes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" }));
         getContentPane().add(jMinutes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 80, -1));
 
         jLabel5.setText("Hours");
@@ -136,8 +160,13 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         });
         getContentPane().add(jAddbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 73, -1));
 
-        jButton2.setText("Update");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 73, -1));
+        jUpdatebtn.setText("Update");
+        jUpdatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUpdatebtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jUpdatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 73, -1));
 
         jButton3.setText("Reset");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +175,24 @@ public class WorkingDaysHours extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 73, -1));
+
+        jLabel7.setText("ID");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 252, 26, -1));
+
+        jSelectID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSelectIDActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jSelectID, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 249, 88, -1));
+
+        jSearchbtn.setText("Search");
+        jSearchbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSearchbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jSearchbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,6 +267,145 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jWorkingDayActionPerformed
 
+    private void jUpdatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdatebtnActionPerformed
+        //update button implementation
+        String noWorkingDays = (String)jWorkingDay.getSelectedItem(); 
+        int monday = 0;
+        int tuesday  = 0;
+        int wednesday = 0;
+        int thursday = 0;
+        int friday = 0;
+        int saturday = 0;
+        int sunday = 0;
+        if(jMonday.isSelected()){
+            monday = 1;
+        }
+         if(jTuesday.isSelected()){
+            tuesday = 1;
+        } 
+         if(jWendnesday.isSelected()){
+            wednesday = 1;
+        }
+          if(jThursday.isSelected()){
+            thursday = 1;
+        }
+           if(jFriday.isSelected()){
+            friday = 1;
+        }
+            if(jSatureday.isSelected()){
+            saturday = 1;
+        }
+             if(jSunday.isSelected()){
+            sunday = 1;
+        }
+        String hours = (String)jHours.getSelectedItem(); 
+        String minutes = (String)jMinutes.getSelectedItem();
+        String workdayid =(String)jSelectID.getSelectedItem();
+        try{
+              con = (Connection) DBconnection.getConnection();
+              stmt = con.createStatement();
+              String sql = "UPDATE management_system.workingdays SET NoDays='"+noWorkingDays+"',monday='"+monday+"',tuesday='"+tuesday+"',wendnesday='"+wednesday+"',thursday='"+thursday+"',friday='"+friday+"',satureday='"+saturday+"',sunday='"+sunday+"',hour='"+hours+"',minute='"+minutes+"' WHERE workingDaysID = '"+workdayid+"'";
+             
+              stmt.executeUpdate(sql);
+              JOptionPane.showMessageDialog(null, "Successfully Updated");
+              setVisible(false);
+              new WorkingDaysHours().setVisible(true);
+              
+              
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(null, "unsuccess");
+              setVisible(false);
+              new WorkingDaysHours().setVisible(true);
+              e.printStackTrace();
+        }
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jUpdatebtnActionPerformed
+
+    private void jSelectIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelectIDActionPerformed
+        
+    }//GEN-LAST:event_jSelectIDActionPerformed
+
+    private void jSearchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchbtnActionPerformed
+        // TODO add your handling code here:
+      String workdayid = jSelectID.getSelectedItem().toString();
+          try{
+              con = (Connection) DBconnection.getConnection();
+              stmt = con.createStatement();
+              String sql = "SELECT workingdays.* FROM management_system.workingdays WHERE workingDaysID = '"+workdayid+"'";
+              rs = stmt.executeQuery(sql);
+              
+              if(rs.next() == true){
+                  
+                  jWorkingDay.setSelectedItem(rs.getString(2));
+                  jHours.setSelectedItem(rs.getString(10));
+                  jMinutes.setSelectedItem(rs.getString(11));
+                  int value = rs.getInt(3);
+                  int value2 = rs.getInt(4);
+                  int value3 = rs.getInt(5);
+                  int value4 = rs.getInt(6);
+                  int value5 = rs.getInt(7);
+                  int value6 = rs.getInt(8);
+                  int value7 = rs.getInt(9);
+                  
+                  if(1 == value){
+                      jMonday.setSelected(true);
+                  }
+                  else{
+                      jMonday.setSelected(false);
+                  }
+                  
+                  if(1 == value2){
+                      jTuesday.setSelected(true);
+                  }
+                  else{
+                      jTuesday.setSelected(false);
+                  }
+                  if(1 == value3){
+                      jWendnesday.setSelected(true);
+                  }
+                  else{
+                      jWendnesday.setSelected(false);
+                  }
+                  if(1 == value4){
+                      jThursday.setSelected(true);
+                  }
+                  else{
+                      jThursday.setSelected(false);
+                  }
+                  if(1 == value5){
+                      jFriday.setSelected(true);
+                  }
+                  else{
+                      jFriday.setSelected(false);
+                  }
+                  if(1 == value6){
+                      jSatureday.setSelected(true);
+                  }
+                  else{
+                      jSatureday.setSelected(false);
+                  }
+                  if(1 == value7){
+                      jSunday.setSelected(true);
+                  }
+                  else{
+                      jSunday.setSelected(false);
+                  }
+              }
+             
+              
+              
+        }catch(Exception e){
+           e.printStackTrace();
+        }
+       
+     
+    }//GEN-LAST:event_jSearchbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,7 +443,6 @@ public class WorkingDaysHours extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAddbtn;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jFriday;
     private javax.swing.JComboBox<String> jHours;
@@ -267,12 +452,16 @@ public class WorkingDaysHours extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JComboBox<String> jMinutes;
     private javax.swing.JCheckBox jMonday;
     private javax.swing.JCheckBox jSatureday;
+    private javax.swing.JButton jSearchbtn;
+    private javax.swing.JComboBox<String> jSelectID;
     private javax.swing.JCheckBox jSunday;
     private javax.swing.JCheckBox jThursday;
     private javax.swing.JCheckBox jTuesday;
+    private javax.swing.JButton jUpdatebtn;
     private javax.swing.JCheckBox jWendnesday;
     private javax.swing.JComboBox<String> jWorkingDay;
     // End of variables declaration//GEN-END:variables

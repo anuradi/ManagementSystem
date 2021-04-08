@@ -77,7 +77,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jAddbtn = new javax.swing.JButton();
         jUpdatebtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jResetbtn = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jSelectID = new javax.swing.JComboBox<>();
         jSearchbtn = new javax.swing.JButton();
@@ -152,6 +152,9 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         jLabel6.setText("Minutes");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
 
+        jAddbtn.setBackground(new java.awt.Color(0, 153, 255));
+        jAddbtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jAddbtn.setForeground(new java.awt.Color(255, 255, 255));
         jAddbtn.setText("ADD");
         jAddbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +163,9 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         });
         getContentPane().add(jAddbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 73, -1));
 
+        jUpdatebtn.setBackground(new java.awt.Color(51, 51, 51));
+        jUpdatebtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jUpdatebtn.setForeground(new java.awt.Color(255, 255, 255));
         jUpdatebtn.setText("Update");
         jUpdatebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,13 +174,16 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         });
         getContentPane().add(jUpdatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 73, -1));
 
-        jButton3.setText("Reset");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jResetbtn.setBackground(new java.awt.Color(204, 0, 51));
+        jResetbtn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jResetbtn.setForeground(new java.awt.Color(255, 255, 255));
+        jResetbtn.setText("Reset");
+        jResetbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jResetbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 73, -1));
+        getContentPane().add(jResetbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 73, -1));
 
         jLabel7.setText("ID");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 252, 26, -1));
@@ -259,9 +268,35 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jAddbtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jResetbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jResetbtnActionPerformed
+       //Reset button
+       jHours.setSelectedItem(null);
+       jMinutes.setSelectedItem(null);
+       jWorkingDay.setSelectedItem(null);
+      if( jMonday.isSelected() == true){
+          jMonday.setSelected(false);
+      }
+      if( jTuesday.isSelected() == true){
+          jTuesday.setSelected(false);
+      }
+      if( jWendnesday.isSelected() == true){
+          jWendnesday.setSelected(false);
+      }
+      if( jThursday.isSelected() == true){
+          jThursday.setSelected(false);
+      }
+      if( jFriday.isSelected() == true){
+          jFriday.setSelected(false);
+      }
+      if( jSatureday.isSelected() == true){
+          jSatureday.setSelected(false);
+      }
+      if( jSunday.isSelected() == true){
+          jSunday.setSelected(false);
+      }
+     
+       
+    }//GEN-LAST:event_jResetbtnActionPerformed
 
     private void jWorkingDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jWorkingDayActionPerformed
         // TODO add your handling code here:
@@ -443,7 +478,6 @@ public class WorkingDaysHours extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAddbtn;
-    private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jFriday;
     private javax.swing.JComboBox<String> jHours;
     private javax.swing.JLabel jLabel1;
@@ -455,6 +489,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JComboBox<String> jMinutes;
     private javax.swing.JCheckBox jMonday;
+    private javax.swing.JButton jResetbtn;
     private javax.swing.JCheckBox jSatureday;
     private javax.swing.JButton jSearchbtn;
     private javax.swing.JComboBox<String> jSelectID;

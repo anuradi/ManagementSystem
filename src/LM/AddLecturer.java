@@ -55,137 +55,98 @@ public class AddLecturer extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Add Lecturer");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 112, -1, -1));
 
         jLabel2.setText("Lecturer Name");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 186, -1, -1));
 
         jLabel3.setText("Faculty");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 225, -1, -1));
 
         jLabel4.setText("Campus");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 265, -1, -1));
 
         jLabel5.setText("Level");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 305, -1, -1));
 
         jLabel6.setText("Employee ID");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 186, -1, -1));
 
         jLabel7.setText("Department");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 225, -1, -1));
 
         jLabel8.setText(" Building");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 265, -1, -1));
 
         jLabel9.setText("Rank");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 305, -1, -1));
+        getContentPane().add(lecname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 183, 188, -1));
+
+        getContentPane().add(lfaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 221, 188, -1));
+
+        getContentPane().add(lcampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 261, 188, -1));
+
+        getContentPane().add(llevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 301, 188, -1));
+        getContentPane().add(lempid, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 183, 177, -1));
+
+        getContentPane().add(ldep, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 221, 180, -1));
+
+        getContentPane().add(lbuilding, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 261, 180, -1));
 
         lrank.setEditable(false);
+        getContentPane().add(lrank, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 302, 180, -1));
 
+        jButton1.setBackground(new java.awt.Color(0, 204, 204));
         jButton1.setText("Generate Rank");
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 385, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 204, 255));
         jButton2.setText("Clear");
+        jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 385, 90, -1));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 153));
         jButton3.setText("Save");
+        jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 385, 90, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lecname)
-                            .addComponent(lfaculty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lcampus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(llevel, 0, 188, Short.MAX_VALUE))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lempid))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ldep, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbuilding, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lrank)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(95, 95, 95)
-                                .addComponent(jButton2)
-                                .addGap(11, 11, 11))
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(73, 73, 73)))
-                .addContainerGap())
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabel1)
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(lecname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lempid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7)
-                    .addComponent(lfaculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ldep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8)
-                    .addComponent(lcampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbuilding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel9)
-                    .addComponent(llevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lrank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(198, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,44 +154,61 @@ public class AddLecturer extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (lempid.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Employee id is empty");
-        }else{
-            lrank.setText(llevel.getSelectedItem().toString()+"."+lempid.getText());
+        } else {
+            lrank.setText(llevel.getSelectedItem().toString() + "." + lempid.getText());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         clearFields();
+        clearFields();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         try {
-            String faculty = lfaculty.getSelectedItem().toString();
-            String campus = lcampus.getSelectedItem().toString();
-            String department = ldep.getSelectedItem().toString();
-            String building = lbuilding.getSelectedItem().toString();
-            String facultyid="";
-            String campusid="";
-            String depid="";
-            String buildingid="";
-            ResultSet rs1 = DB.DB.search("select idfaculty from faculty where name='" + faculty + "'");
-            if (rs1.first()) {
-                facultyid=rs1.getString(1);
+        try {
+            if (lecname.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Lecture name is empty");
+            } else if (lempid.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Employee ID is empty");
+            } else if (lfaculty.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Faculty");
+            } else if (lcampus.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Campus");
+            } else if (ldep.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Department");
+            } else if (lbuilding.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Building");
+            } else if (llevel.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Level");
+            } else {
+                String faculty = lfaculty.getSelectedItem().toString();
+                String campus = lcampus.getSelectedItem().toString();
+                String department = ldep.getSelectedItem().toString();
+                String building = lbuilding.getSelectedItem().toString();
+                String facultyid = "";
+                String campusid = "";
+                String depid = "";
+                String buildingid = "";
+                ResultSet rs1 = DB.DB.search("select idfaculty from faculty where name='" + faculty + "'");
+                if (rs1.first()) {
+                    facultyid = rs1.getString(1);
+                }
+                ResultSet rs2 = DB.DB.search("select idcampus from campus where name='" + campus + "'");
+                if (rs2.first()) {
+                    campusid = rs2.getString(1);
+                }
+                ResultSet rs3 = DB.DB.search("select iddepartment from department where name='" + department + "'");
+                if (rs3.first()) {
+                    depid = rs3.getString(1);
+                }
+
+                ResultSet rs4 = DB.DB.search("select idbuilding from building where name='" + building + "'");
+                if (rs4.first()) {
+                    buildingid = rs4.getString(1);
+                }
+                DB.DB.iud("insert into lecturer (name, emp_id, rank, faculty_id, department_id, campus_id, building_id, level_id,status) values ('" + lecname.getText() + "','" + lempid.getText() + "','" + lrank.getText() + "','" + facultyid + "','" + depid + "','" + campusid + "','" + buildingid + "','" + llevel.getSelectedItem().toString() + "', 'Active')");
+                JOptionPane.showMessageDialog(rootPane, "Successfully Saved");
+                clearFields();
             }
-            ResultSet rs2 = DB.DB.search("select idcampus from campus where name='" + campus + "'");
-            if (rs2.first()) {
-                campusid=rs2.getString(1);
-            }
-            ResultSet rs3 = DB.DB.search("select iddepartment from department where name='" + department + "'");
-            if (rs3.first()) {
-                depid=rs3.getString(1);
-            }
-            
-            ResultSet rs4 = DB.DB.search("select idbuilding from building where name='" + building + "'");
-            if (rs4.first()) {
-                buildingid=rs4.getString(1);
-            }
-            DB.DB.iud("insert into lecturer (name, emp_id, rank, faculty_id, department_id, campus_id, building_id, level_id) values ('"+lecname.getText()+"','"+lempid.getText()+"','"+lrank.getText()+"','"+facultyid+"','"+depid+"','"+campusid+"','"+buildingid+"','"+llevel.getSelectedItem().toString()+"')");
-            JOptionPane.showMessageDialog(rootPane, "Successfully Saved");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -284,6 +262,7 @@ public class AddLecturer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> lbuilding;
     private javax.swing.JComboBox<String> lcampus;
     private javax.swing.JComboBox<String> ldep;
@@ -296,6 +275,7 @@ public class AddLecturer extends javax.swing.JFrame {
 
     private void loadFaculty() {
         try {
+            lfaculty.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct name from faculty");
             while (rs.next()) {
                 lfaculty.addItem(rs.getString(1));
@@ -306,6 +286,7 @@ public class AddLecturer extends javax.swing.JFrame {
 
     private void loadCampus() {
         try {
+            lcampus.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct name from campus");
             while (rs.next()) {
                 lcampus.addItem(rs.getString(1));
@@ -316,6 +297,7 @@ public class AddLecturer extends javax.swing.JFrame {
 
     private void loadLevel() {
         try {
+            llevel.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct level from level");
             while (rs.next()) {
                 llevel.addItem(rs.getString(1));
@@ -326,6 +308,7 @@ public class AddLecturer extends javax.swing.JFrame {
 
     private void loadDepartment() {
         try {
+            ldep.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct name from department");
             while (rs.next()) {
                 ldep.addItem(rs.getString(1));
@@ -336,6 +319,7 @@ public class AddLecturer extends javax.swing.JFrame {
 
     private void loadBuilding() {
         try {
+            lbuilding.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct name from building");
             while (rs.next()) {
                 lbuilding.addItem(rs.getString(1));

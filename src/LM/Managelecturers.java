@@ -16,7 +16,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Managelecturers extends javax.swing.JFrame {
 
-    String lecid="";
+    String lecid = "";
+
     /**
      * Creates new form Managelecturers
      */
@@ -60,11 +61,14 @@ public class Managelecturers extends javax.swing.JFrame {
         lcampus = new javax.swing.JComboBox<>();
         update = new javax.swing.JButton();
         delete = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Manage Lecturers");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 57, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,135 +85,89 @@ public class Managelecturers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 92, 582, 173));
+
         jLabel3.setText("Faculty");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 339, -1, -1));
+        getContentPane().add(lempid, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 297, 192, -1));
+
+        getContentPane().add(llevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 415, 188, -1));
+
+        getContentPane().add(lfaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 335, 188, -1));
+        getContentPane().add(lecname, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 297, 188, -1));
 
         jLabel9.setText("Rank");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 419, -1, -1));
 
         jLabel8.setText(" Building");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 379, -1, -1));
 
         jLabel7.setText("Department");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 339, -1, -1));
 
         jLabel6.setText("Employee ID");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
 
         lrank.setEditable(false);
+        getContentPane().add(lrank, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 416, 195, -1));
 
         jLabel5.setText("Level");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 419, -1, -1));
+
+        getContentPane().add(lbuilding, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 375, 195, -1));
 
         jLabel4.setText("Campus");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 379, -1, -1));
+
+        getContentPane().add(ldep, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 335, 195, -1));
 
         jLabel2.setText("Lecturer Name");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
 
+        getContentPane().add(lcampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 375, 188, -1));
+
+        update.setBackground(new java.awt.Color(153, 204, 255));
         update.setText("Update");
+        update.setBorderPainted(false);
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
             }
         });
+        getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 488, 120, -1));
 
+        delete.setBackground(new java.awt.Color(255, 204, 102));
         delete.setText("Delete");
+        delete.setBorderPainted(false);
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
             }
         });
+        getContentPane().add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 488, 120, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lecname)
-                                    .addComponent(lfaculty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lcampus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(llevel, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(44, 44, 44)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lempid))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel8))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(delete)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(ldep, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lbuilding, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lrank)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(224, 224, 224)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(150, 150, 150)
-                                .addComponent(update)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(lecname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lempid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7)
-                    .addComponent(lfaculty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ldep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8)
-                    .addComponent(lcampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbuilding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel9)
-                    .addComponent(llevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lrank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(update)
-                    .addComponent(delete))
-                .addContainerGap(95, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int selectedRow = jTable1.getSelectedRow();
-        DefaultTableModel dtm=(DefaultTableModel) jTable1.getModel();
-        if (selectedRow!=-1) {
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        if (selectedRow != -1) {
             lecname.setText(dtm.getValueAt(selectedRow, 1).toString());
             lfaculty.setSelectedItem(dtm.getValueAt(selectedRow, 3).toString());
             lcampus.setSelectedItem(dtm.getValueAt(selectedRow, 5).toString());
@@ -218,53 +176,63 @@ public class Managelecturers extends javax.swing.JFrame {
             ldep.setSelectedItem(dtm.getValueAt(selectedRow, 4).toString());
             lbuilding.setSelectedItem(dtm.getValueAt(selectedRow, 6).toString());
             lrank.setText(dtm.getValueAt(selectedRow, 8).toString());
-            lecid=dtm.getValueAt(selectedRow, 0).toString();
+            lecid = dtm.getValueAt(selectedRow, 0).toString();
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         try {
-            String faculty = lfaculty.getSelectedItem().toString();
-            String campus = lcampus.getSelectedItem().toString();
-            String department = ldep.getSelectedItem().toString();
-            String building = lbuilding.getSelectedItem().toString();
-            String facultyid="";
-            String campusid="";
-            String depid="";
-            String buildingid="";
-            ResultSet rs1 = DB.DB.search("select idfaculty from faculty where name='" + faculty + "'");
-            if (rs1.first()) {
-                facultyid=rs1.getString(1);
+            if (lecname.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Lecture name is empty");
+            } else if (lempid.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Employee ID is empty");
+            } else if (lfaculty.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Faculty");
+            } else if (lcampus.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Campus");
+            } else if (ldep.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Department");
+            } else if (lbuilding.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Building");
+            } else if (llevel.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Level");
+            } else {
+                String faculty = lfaculty.getSelectedItem().toString();
+                String campus = lcampus.getSelectedItem().toString();
+                String department = ldep.getSelectedItem().toString();
+                String building = lbuilding.getSelectedItem().toString();
+                String facultyid = "";
+                String campusid = "";
+                String depid = "";
+                String buildingid = "";
+                ResultSet rs1 = DB.DB.search("select idfaculty from faculty where name='" + faculty + "'");
+                if (rs1.first()) {
+                    facultyid = rs1.getString(1);
+                }
+                ResultSet rs2 = DB.DB.search("select idcampus from campus where name='" + campus + "'");
+                if (rs2.first()) {
+                    campusid = rs2.getString(1);
+                }
+                ResultSet rs3 = DB.DB.search("select iddepartment from department where name='" + department + "'");
+                if (rs3.first()) {
+                    depid = rs3.getString(1);
+                }
+
+                ResultSet rs4 = DB.DB.search("select idbuilding from building where name='" + building + "'");
+                if (rs4.first()) {
+                    buildingid = rs4.getString(1);
+                }
+                DB.DB.iud("update lecturer set name='" + lecname.getText() + "', emp_id='" + lempid.getText() + "', rank='" + lrank.getText() + "', faculty_id='" + facultyid + "', department_id='" + depid + "', campus_id='" + campusid + "', building_id='" + buildingid + "', level_id='" + llevel.getSelectedItem().toString() + "' where idlecturer='" + lecid + "'");
+                JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
+                loadTableData();
             }
-            ResultSet rs2 = DB.DB.search("select idcampus from campus where name='" + campus + "'");
-            if (rs2.first()) {
-                campusid=rs2.getString(1);
-            }
-            ResultSet rs3 = DB.DB.search("select iddepartment from department where name='" + department + "'");
-            if (rs3.first()) {
-                depid=rs3.getString(1);
-            }
-            
-            ResultSet rs4 = DB.DB.search("select idbuilding from building where name='" + building + "'");
-            if (rs4.first()) {
-                buildingid=rs4.getString(1);
-            }
-            DB.DB.iud("update lecturer set name='"+lecname.getText()+"', emp_id='"+lempid.getText()+"', rank='"+lrank.getText()+"', faculty_id='"+facultyid+"', department_id='"+depid+"', campus_id='"+campusid+"', building_id='"+buildingid+"', level_id='"+llevel.getSelectedItem().toString()+"' where idlecturer='"+lecid+"'");
-            JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
-            loadTableData();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-         try {
-            DB.DB.iud("delete from lecturer where idlecturer='"+lecid+"'");
-            JOptionPane.showMessageDialog(rootPane, "Successfully Deleted");
-            loadTableData();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        deleteLectures();
     }//GEN-LAST:event_deleteActionPerformed
 
     /**
@@ -313,6 +281,7 @@ public class Managelecturers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> lbuilding;
@@ -328,6 +297,7 @@ public class Managelecturers extends javax.swing.JFrame {
 
     private void loadFaculty() {
         try {
+            lfaculty.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct name from faculty");
             while (rs.next()) {
                 lfaculty.addItem(rs.getString(1));
@@ -338,6 +308,7 @@ public class Managelecturers extends javax.swing.JFrame {
 
     private void loadCampus() {
         try {
+            lcampus.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct name from campus");
             while (rs.next()) {
                 lcampus.addItem(rs.getString(1));
@@ -348,6 +319,7 @@ public class Managelecturers extends javax.swing.JFrame {
 
     private void loadLevel() {
         try {
+            llevel.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct level from level");
             while (rs.next()) {
                 llevel.addItem(rs.getString(1));
@@ -358,6 +330,7 @@ public class Managelecturers extends javax.swing.JFrame {
 
     private void loadDepartment() {
         try {
+            ldep.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct name from department");
             while (rs.next()) {
                 ldep.addItem(rs.getString(1));
@@ -368,6 +341,7 @@ public class Managelecturers extends javax.swing.JFrame {
 
     private void loadBuilding() {
         try {
+            lbuilding.addItem("<-Select->");
             ResultSet rs = DB.DB.search("select distinct name from building");
             while (rs.next()) {
                 lbuilding.addItem(rs.getString(1));
@@ -380,15 +354,20 @@ public class Managelecturers extends javax.swing.JFrame {
         lecname.setText("");
         lempid.setText("");
         lrank.setText("");
+        lfaculty.setSelectedItem("<-Select->");
+        lcampus.setSelectedItem("<-Select->");
+        llevel.setSelectedItem("<-Select->");
+        ldep.setSelectedItem("<-Select->");
+        lbuilding.setSelectedItem("<-Select->");
     }
 
     private void loadTableData() {
         try {
-            DefaultTableModel dtm=(DefaultTableModel) jTable1.getModel();
+            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
-            ResultSet rs = DB.DB.search("select l.idlecturer,l.name,l.emp_id,f.name,d.name,c.name,b.name,l.level_id,l.rank from lecturer l JOIN building b on l.building_id=b.idbuilding JOIN campus c on l.campus_id=c.idcampus JOIN department d on l.department_id=d.iddepartment JOIN faculty f on l.faculty_id=f.idfaculty");
-            while (rs.next()) {                
-                Vector v=new Vector();
+            ResultSet rs = DB.DB.search("select l.idlecturer,l.name,l.emp_id,f.name,d.name,c.name,b.name,l.level_id,l.rank from lecturer l JOIN building b on l.building_id=b.idbuilding JOIN campus c on l.campus_id=c.idcampus JOIN department d on l.department_id=d.iddepartment JOIN faculty f on l.faculty_id=f.idfaculty where l.status!='deactive'");
+            while (rs.next()) {
+                Vector v = new Vector();
                 v.add(rs.getString(1));
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
@@ -400,6 +379,17 @@ public class Managelecturers extends javax.swing.JFrame {
                 v.add(rs.getString(9));
                 dtm.addRow(v);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteLectures() {
+        try {
+            DB.DB.iud("update lecturer set status='deactive' where idlecturer='" + lecid + "'");
+            JOptionPane.showMessageDialog(rootPane, "Successfully Deleted");
+            loadTableData();
+            clearFields();
         } catch (Exception e) {
             e.printStackTrace();
         }

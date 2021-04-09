@@ -48,138 +48,82 @@ public class AddSubject extends javax.swing.JFrame {
         stutorialh = new javax.swing.JSpinner();
         slabh = new javax.swing.JSpinner();
         sevoh = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Add Subject");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 47, -1, -1));
 
         jLabel2.setText("Offered Year");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 99, -1, -1));
 
         jLabel3.setText("Offered Semester");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 138, -1, -1));
 
         jLabel4.setText("Subject Name");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 178, -1, -1));
 
         jLabel5.setText("Subject Code");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 216, -1, -1));
 
         jLabel6.setText("Number of Lecture Hours");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 99, -1, -1));
 
         jLabel7.setText("Number of Tutorial Hours");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 138, -1, -1));
 
         jLabel8.setText("Number of Lab Hours");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 178, -1, -1));
 
         jLabel9.setText("Number of Ecolution Hours");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 216, -1, -1));
 
         sofferyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        getContentPane().add(sofferyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 96, 139, -1));
+        getContentPane().add(sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 175, 139, -1));
+        getContentPane().add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 213, 139, -1));
 
         sfirstsem.setSelected(true);
         sfirstsem.setText("First");
+        getContentPane().add(sfirstsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 134, -1, -1));
 
         buttonGroup1.add(ssecondsem);
         ssecondsem.setText("Second");
+        getContentPane().add(ssecondsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 134, -1, -1));
+        getContentPane().add(slech, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 96, 50, -1));
+        getContentPane().add(stutorialh, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 135, 50, -1));
+        getContentPane().add(slabh, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 175, 50, -1));
+        getContentPane().add(sevoh, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 213, 50, -1));
 
-        jButton1.setText("Clear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 153));
         jButton2.setText("Save");
+        jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 100, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sofferyear, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(scode, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(sfirstsem)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ssecondsem))
-                                    .addComponent(jButton1))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel6))
-                                    .addComponent(jButton2))
-                                .addGap(0, 7, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8))))))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(slech, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(stutorialh)
-                    .addComponent(slabh)
-                    .addComponent(sevoh))
-                .addGap(78, 78, 78))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(sofferyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(slech, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7)
-                    .addComponent(sfirstsem)
-                    .addComponent(ssecondsem)
-                    .addComponent(stutorialh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8)
-                    .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(slabh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel9)
-                    .addComponent(scode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sevoh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(256, Short.MAX_VALUE))
-        );
+        jButton1.setBackground(new java.awt.Color(255, 204, 255));
+        jButton1.setText("Clear");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 100, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -190,22 +134,28 @@ public class AddSubject extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            String offeryear = sofferyear.getSelectedItem().toString();
-            String semester="";
-            if (sfirstsem.isSelected()) {
-                semester="First";
+            if (scode.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Subject code is empty");
+            } else if (sname.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Subject Name is empty");
             } else {
-                semester="Second";
+                String offeryear = sofferyear.getSelectedItem().toString();
+                String semester = "";
+                if (sfirstsem.isSelected()) {
+                    semester = "First";
+                } else {
+                    semester = "Second";
+                }
+                String subject = sname.getText();
+                String code = scode.getText();
+                String lechours = slech.getValue().toString();
+                String tutorialhours = stutorialh.getValue().toString();
+                String labhours = slabh.getValue().toString();
+                String evolutionhours = sevoh.getValue().toString();
+                DB.DB.iud("insert into subjects ( name, code, semester, lecture_hours, lab_hours, totorial_hours, evolution_hours, year, status) values ('" + subject + "','" + code + "','" + semester + "','" + lechours + "','" + labhours + "','" + tutorialhours + "','" + evolutionhours + "','" + offeryear + "', 'Active' )");
+                JOptionPane.showMessageDialog(rootPane, "Successfully saved");
+                clearFields();
             }
-            String subject = sname.getText();
-            String code = scode.getText();
-            String lechours = slech.getValue().toString();
-            String tutorialhours = stutorialh.getValue().toString();
-            String labhours = slabh.getValue().toString();
-            String evolutionhours = sevoh.getValue().toString();
-            DB.DB.iud("insert into subjects ( name, code, semester, lecture_hours, lab_hours, totorial_hours, evolution_hours, year) values ('"+subject+"','"+code+"','"+semester+"','"+lechours+"','"+labhours+"','"+tutorialhours+"','"+evolutionhours+"','"+offeryear+"')");
-            JOptionPane.showMessageDialog(rootPane, "Successfully saved");
-            clearFields();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -259,6 +209,7 @@ public class AddSubject extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField scode;
     private javax.swing.JSpinner sevoh;
     private javax.swing.JRadioButton sfirstsem;

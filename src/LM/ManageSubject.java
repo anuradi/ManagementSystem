@@ -17,7 +17,8 @@ import javax.swing.table.TableModel;
  */
 public class ManageSubject extends javax.swing.JFrame {
 
-    String subjectid="";
+    String subjectid = "";
+
     /**
      * Creates new form ManageSubject
      */
@@ -51,17 +52,20 @@ public class ManageSubject extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         slabh = new javax.swing.JSpinner();
         jLabel7 = new javax.swing.JLabel();
-        stutorialh = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
-        slech = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
-        update = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         delete = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        stutorialh = new javax.swing.JSpinner();
+        slech = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Manage Subjects");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 35, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,163 +82,101 @@ public class ManageSubject extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 580, 155));
+
         jLabel4.setText("Subject Name");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 344, -1, -1));
 
         ssecondsem.setText("Second");
+        getContentPane().add(ssecondsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 300, -1, -1));
 
         jLabel3.setText("Offered Semester");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 304, -1, -1));
 
         sfirstsem.setSelected(true);
         sfirstsem.setText("First");
+        getContentPane().add(sfirstsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 300, -1, -1));
 
         jLabel2.setText("Offered Year");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 265, -1, -1));
+        getContentPane().add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 379, 139, -1));
+        getContentPane().add(sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 341, 139, -1));
 
         sofferyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        getContentPane().add(sofferyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 262, 139, -1));
+        getContentPane().add(sevoh, new org.netbeans.lib.awtextra.AbsoluteConstraints(519, 379, 50, -1));
 
         jLabel9.setText("Number of Ecolution Hours");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 382, -1, -1));
 
         jLabel8.setText("Number of Lab Hours");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 344, -1, -1));
+        getContentPane().add(slabh, new org.netbeans.lib.awtextra.AbsoluteConstraints(519, 341, 50, -1));
 
         jLabel7.setText("Number of Tutorial Hours");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 304, -1, -1));
 
         jLabel6.setText("Number of Lecture Hours");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 265, -1, -1));
 
         jLabel5.setText("Subject Code");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 382, -1, -1));
 
-        update.setText("Update");
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        delete.setBackground(new java.awt.Color(255, 204, 102));
         delete.setText("Delete");
+        delete.setBorderPainted(false);
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
             }
         });
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 110, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sofferyear, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(scode, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(sfirstsem)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ssecondsem))))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sevoh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(slabh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6))
-                                .addGap(51, 51, 51)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(slech, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(stutorialh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 42, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(223, 223, 223)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(130, 130, 130)
-                                .addComponent(update)
-                                .addGap(105, 105, 105)
-                                .addComponent(delete)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(sofferyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(slech, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7)
-                    .addComponent(sfirstsem)
-                    .addComponent(ssecondsem)
-                    .addComponent(stutorialh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8)
-                    .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(slabh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel9)
-                    .addComponent(scode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sevoh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(update)
-                    .addComponent(delete))
-                .addContainerGap(132, Short.MAX_VALUE))
-        );
+        update.setBackground(new java.awt.Color(153, 204, 255));
+        update.setText("Update");
+        update.setBorderPainted(false);
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 110, -1));
+        jPanel1.add(stutorialh, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 50, -1));
+        jPanel1.add(slech, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 50, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-         try {
-            String offeryear = sofferyear.getSelectedItem().toString();
-            String semester="";
-            if (sfirstsem.isSelected()) {
-                semester="First";
+        try {
+            if (scode.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Subject code is empty");
+            } else if (sname.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Subject Name is empty");
             } else {
-                semester="Second";
+                String offeryear = sofferyear.getSelectedItem().toString();
+                String semester = "";
+                if (sfirstsem.isSelected()) {
+                    semester = "First";
+                } else {
+                    semester = "Second";
+                }
+                String subject = sname.getText();
+                String code = scode.getText();
+                String lechours = slech.getValue().toString();
+                String tutorialhours = stutorialh.getValue().toString();
+                String labhours = slabh.getValue().toString();
+                String evolutionhours = sevoh.getValue().toString();
+                DB.DB.iud("update subjects set name='" + subject + "', code='" + code + "', semester='" + semester + "', lecture_hours='" + lechours + "', lab_hours='" + labhours + "', totorial_hours='" + tutorialhours + "', evolution_hours='" + evolutionhours + "', year='" + offeryear + "' where idsubjects='" + subjectid + "'");
+                JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
+                loadTableData();
+                clearFields();
             }
-            String subject = sname.getText();
-            String code = scode.getText();
-            String lechours = slech.getValue().toString();
-            String tutorialhours = stutorialh.getValue().toString();
-            String labhours = slabh.getValue().toString();
-            String evolutionhours = sevoh.getValue().toString();
-            DB.DB.iud("update subjects set name='"+subject+"', code='"+code+"', semester='"+semester+"', lecture_hours='"+lechours+"', lab_hours='"+labhours+"', totorial_hours='"+tutorialhours+"', evolution_hours='"+evolutionhours+"', year='"+offeryear+"' where idsubjects='"+subjectid+"'");
-            JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
-            loadTableData();
-            clearFields();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -242,12 +184,12 @@ public class ManageSubject extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int selectedRow = jTable1.getSelectedRow();
-        if (selectedRow!=-1) {
+        if (selectedRow != -1) {
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             sofferyear.setSelectedItem(dtm.getValueAt(selectedRow, 3).toString());
             if (dtm.getValueAt(selectedRow, 4).toString().equals("First")) {
                 sfirstsem.setSelected(true);
-            }else{
+            } else {
                 ssecondsem.setSelected(false);
             }
             sname.setText(dtm.getValueAt(selectedRow, 1).toString());
@@ -256,18 +198,12 @@ public class ManageSubject extends javax.swing.JFrame {
             stutorialh.setValue(Integer.parseInt(dtm.getValueAt(selectedRow, 6).toString()));
             slabh.setValue(Integer.parseInt(dtm.getValueAt(selectedRow, 7).toString()));
             sevoh.setValue(Integer.parseInt(dtm.getValueAt(selectedRow, 8).toString()));
-            subjectid=dtm.getValueAt(selectedRow, 0).toString();
+            subjectid = dtm.getValueAt(selectedRow, 0).toString();
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-         try {
-            DB.DB.iud("delete from subjects where idsubjects='"+subjectid+"'");
-            JOptionPane.showMessageDialog(rootPane, "Successfully Deleted");
-            loadTableData();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        deleteSubject();
     }//GEN-LAST:event_deleteActionPerformed
 
     /**
@@ -316,6 +252,7 @@ public class ManageSubject extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField scode;
@@ -343,9 +280,9 @@ public class ManageSubject extends javax.swing.JFrame {
         try {
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
-            ResultSet rs = DB.DB.search("select s.idsubjects,s.name,s.code,s.year,s.semester,s.lecture_hours,s.totorial_hours,s.lab_hours,s.evolution_hours from subjects s");
-            while (rs.next()) {                
-                Vector v=new Vector();
+            ResultSet rs = DB.DB.search("select s.idsubjects,s.name,s.code,s.year,s.semester,s.lecture_hours,s.totorial_hours,s.lab_hours,s.evolution_hours from subjects s where s.status!='deactive'");
+            while (rs.next()) {
+                Vector v = new Vector();
                 v.add(rs.getString(1));
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
@@ -357,6 +294,17 @@ public class ManageSubject extends javax.swing.JFrame {
                 v.add(rs.getString(9));
                 dtm.addRow(v);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteSubject() {
+        try {
+            DB.DB.iud("update subjects set status='deactive' where idsubjects='" + subjectid + "'");
+            JOptionPane.showMessageDialog(rootPane, "Successfully Deleted");
+            loadTableData();
+            clearFields();
         } catch (Exception e) {
             e.printStackTrace();
         }

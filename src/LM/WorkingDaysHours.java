@@ -82,17 +82,19 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         jSelectID = new javax.swing.JComboBox<>();
         jSearchbtn = new javax.swing.JButton();
         jDeletebtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(245, 242, 242));
+        setBackground(new java.awt.Color(0, 153, 153));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(java.awt.Color.black);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Add Working Days & Hours");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 11, 295, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Numbers of Working Days");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
@@ -104,13 +106,18 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         });
         getContentPane().add(jWorkingDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 69, 100, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText(" Working Days");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 20));
 
+        jTuesday.setBackground(new java.awt.Color(0, 153, 153));
+        jTuesday.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTuesday.setText("Tuesday");
+        jTuesday.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jTuesday, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 193, 81, -1));
 
+        jMonday.setBackground(new java.awt.Color(0, 153, 153));
+        jMonday.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jMonday.setText("Monday");
         jMonday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,16 +126,28 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         });
         getContentPane().add(jMonday, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 138, 81, -1));
 
+        jWendnesday.setBackground(new java.awt.Color(0, 153, 153));
+        jWendnesday.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jWendnesday.setText("Wendnesday");
+        jWendnesday.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jWendnesday, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 248, 100, -1));
 
+        jThursday.setBackground(new java.awt.Color(0, 153, 153));
+        jThursday.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jThursday.setText("Thursday");
+        jThursday.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jThursday, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 309, 81, -1));
 
+        jFriday.setBackground(new java.awt.Color(0, 153, 153));
+        jFriday.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jFriday.setText("Friday");
+        jFriday.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jFriday, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 363, 81, -1));
 
+        jSatureday.setBackground(new java.awt.Color(0, 153, 153));
+        jSatureday.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jSatureday.setText("Satureday");
+        jSatureday.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jSatureday.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSaturedayActionPerformed(evt);
@@ -136,12 +155,15 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         });
         getContentPane().add(jSatureday, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 138, 81, -1));
 
+        jSunday.setBackground(new java.awt.Color(0, 153, 153));
+        jSunday.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jSunday.setText("Sunday");
+        jSunday.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jSunday, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 193, 81, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Working Time per Day");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, 20));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 70, 150, 20));
 
         jHours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(jHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 80, -1));
@@ -188,7 +210,9 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         });
         getContentPane().add(jResetbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 73, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("ID");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 252, 26, -1));
 
         jSelectID.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +243,11 @@ public class WorkingDaysHours extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jDeletebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -80, 820, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -525,6 +554,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JComboBox<String> jMinutes;
     private javax.swing.JCheckBox jMonday;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jResetbtn;
     private javax.swing.JCheckBox jSatureday;
     private javax.swing.JButton jSearchbtn;

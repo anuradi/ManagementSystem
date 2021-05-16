@@ -21,7 +21,7 @@ public class DBconnection {
 	public static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/pafDB","root", "");
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/management_system","root", "");
 			stmt = con.createStatement();
 			
 		} catch (Exception e) {

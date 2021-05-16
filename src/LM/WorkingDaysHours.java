@@ -498,7 +498,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
               
               
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "unsuccess");
+             JOptionPane.showMessageDialog(null, "Delete Unsuccess");
               setVisible(false);
               new WorkingDaysHours().setVisible(true);
               e.printStackTrace();

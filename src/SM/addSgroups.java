@@ -31,31 +31,27 @@ public class addSgroups extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        generateid = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
+        save = new javax.swing.JButton();
         semester = new javax.swing.JTextField();
         programme = new javax.swing.JComboBox<>();
         groupno = new javax.swing.JComboBox<>();
         subgroupno = new javax.swing.JComboBox<>();
         groupid = new javax.swing.JTextField();
         subgroupid = new javax.swing.JTextField();
-        generateid = new javax.swing.JButton();
-        clear = new javax.swing.JButton();
-        save = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
-        setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Add Student Groups");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 43, -1, -1));
 
         jLabel2.setText("Academic Year Semester");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
@@ -74,7 +70,38 @@ public class addSgroups extends javax.swing.JFrame {
 
         jLabel7.setText("Sub Group ID");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
-        getContentPane().add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 170, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Add Student Groups");
+
+        generateid.setBackground(new java.awt.Color(0, 204, 204));
+        generateid.setText("Generate IDs");
+        generateid.setBorderPainted(false);
+        generateid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateidActionPerformed(evt);
+            }
+        });
+
+        clear.setBackground(new java.awt.Color(255, 204, 255));
+        clear.setText("Clear");
+        clear.setBorderPainted(false);
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+
+        save.setBackground(new java.awt.Color(255, 255, 153));
+        save.setText("Save");
+        save.setBorderPainted(false);
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
 
         programme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "IT", "CS" }));
         programme.addActionListener(new java.awt.event.ActionListener() {
@@ -82,10 +109,8 @@ public class addSgroups extends javax.swing.JFrame {
                 programmeActionPerformed(evt);
             }
         });
-        getContentPane().add(programme, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 170, -1));
 
         groupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-        getContentPane().add(groupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 170, -1));
 
         subgroupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
         subgroupno.addActionListener(new java.awt.event.ActionListener() {
@@ -93,45 +118,68 @@ public class addSgroups extends javax.swing.JFrame {
                 subgroupnoActionPerformed(evt);
             }
         });
-        getContentPane().add(subgroupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 170, -1));
 
         groupid.setEditable(false);
-        getContentPane().add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 170, -1));
 
         subgroupid.setEditable(false);
-        getContentPane().add(subgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 170, -1));
 
-        generateid.setBackground(new java.awt.Color(0, 0, 0));
-        generateid.setForeground(new java.awt.Color(255, 255, 255));
-        generateid.setText("Generate IDs");
-        generateid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generateidActionPerformed(evt);
-            }
-        });
-        getContentPane().add(generateid, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(generateid, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(programme, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(groupno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(subgroupno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(groupid, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(subgroupid, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(209, 209, 209))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addGap(52, 52, 52)
+                .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(programme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(groupno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(subgroupno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(groupid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(subgroupid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(generateid)
+                    .addComponent(clear)
+                    .addComponent(save))
+                .addGap(50, 50, 50))
+        );
 
-        clear.setBackground(new java.awt.Color(0, 0, 0));
-        clear.setForeground(new java.awt.Color(255, 255, 255));
-        clear.setText("Clear");
-        clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearActionPerformed(evt);
-            }
-        });
-        getContentPane().add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, -1, -1));
-
-        save.setBackground(new java.awt.Color(0, 0, 0));
-        save.setForeground(new java.awt.Color(255, 255, 255));
-        save.setText("Save");
-        save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
-            }
-        });
-        getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 400));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void programmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programmeActionPerformed
@@ -188,7 +236,7 @@ public class addSgroups extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please generate sub group id");
         } else {
             try {
-                DB.DB.iud("insert into student_groups (semester, program, groupno, subgroupno, groups_id, sub_groups_id)values ('" + semest + "','" + program + "','" + group + "','" + subgroup + "','" + groupid + "','" + subgroupid + "')");
+                DB.DB.iud("insert into student_groups (semester, program, groupno, subgroupno, groups_id, sub_groups_id,status)values ('" + semest + "','" + program + "','" + group + "','" + subgroup + "','" + groupid + "','" + subgroupid + "','Active')");
                 JOptionPane.showMessageDialog(rootPane, "Successfully inserted");
                 clearFields();
             } catch (Exception ex) {
@@ -244,6 +292,7 @@ public class addSgroups extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> programme;
     private javax.swing.JButton save;
     private javax.swing.JTextField semester;

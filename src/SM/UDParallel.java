@@ -5,17 +5,26 @@
  */
 package SM;
 
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Thilona
  */
 public class UDParallel extends javax.swing.JFrame {
 
+    String parallelid = "";
+
     /**
      * Creates new form UDConsecutive
      */
     public UDParallel() {
         initComponents();
+        loadTableData();
+        loadSubjects();
     }
 
     /**
@@ -30,14 +39,29 @@ public class UDParallel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        pstarttime = new javax.swing.JTextField();
+        pday = new javax.swing.JTextField();
+        pduration = new javax.swing.JTextField();
+        psubject1 = new javax.swing.JComboBox<>();
+        psubject2 = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btn_Exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Update And Delete Consecutive Sessions");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 55, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -47,59 +71,190 @@ public class UDParallel extends javax.swing.JFrame {
                 "ID", "Start Time", "Day", "Duration", "Subject 1", "Subject 2"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 572, 152));
+
+        jLabel2.setText("Start Time");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 288, -1, -1));
+
+        jLabel3.setText("Day");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 328, -1, -1));
+
+        jLabel4.setText("Duration");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 367, -1, -1));
+
+        jLabel5.setText("Subject 1");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 288, -1, -1));
+
+        jLabel6.setText("Subject 2");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 328, -1, -1));
+        getContentPane().add(pstarttime, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 285, 183, -1));
+        getContentPane().add(pday, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 325, 183, -1));
+        getContentPane().add(pduration, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 364, 183, -1));
+
+        psubject1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                psubject1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(psubject1, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 284, 191, -1));
+
+        getContentPane().add(psubject2, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 324, 191, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 255));
         jButton1.setText("Clear");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(153, 204, 255));
         jButton2.setText("Update");
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(255, 204, 102));
         jButton3.setText("Delete");
+        jButton3.setBorderPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        btn_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit.setBorder(null);
+        btn_Exit.setBorderPainted(false);
+        btn_Exit.setContentAreaFilled(false);
+        btn_Exit.setFocusPainted(false);
+        btn_Exit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(159, 159, 159))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jButton1)
-                        .addGap(88, 88, 88)
-                        .addComponent(jButton2)
-                        .addGap(80, 80, 80)
-                        .addComponent(jButton3)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(btn_Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(btn_Exit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 472, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
+                    .addComponent(jButton1)
                     .addComponent(jButton3))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGap(80, 80, 80))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRow = jTable1.getSelectedRow();
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        if (selectedRow != -1) {
+            pstarttime.setText(dtm.getValueAt(selectedRow, 1).toString());
+            pday.setText(dtm.getValueAt(selectedRow, 2).toString());
+            pduration.setText(dtm.getValueAt(selectedRow, 3).toString());
+            psubject1.setSelectedItem(dtm.getValueAt(selectedRow, 4).toString());
+            psubject2.setSelectedItem(dtm.getValueAt(selectedRow, 5).toString());
+            parallelid = dtm.getValueAt(selectedRow, 0).toString();
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        loadTableData();
+        clearFields();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void psubject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psubject1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_psubject1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            int selectedRow = jTable1.getSelectedRow();
+            if (selectedRow != -1) {
+                if (psubject1.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select the subject 1");
+                } else if (psubject2.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select the subject 2");
+                } else if (pstarttime.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(rootPane, "Start time is empty");
+                } else if (pday.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(rootPane, "Day is empty");
+                } else if (pduration.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(rootPane, "Duration is empty");
+                } else {
+                    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                    String starttime = pstarttime.getText();
+                    String day = pday.getText();
+                    String duration = pduration.getText();
+                    String subject1 = psubject1.getSelectedItem().toString();
+                    String subject2 = psubject2.getSelectedItem().toString();
+                    String subject1id = "";
+                    String subject2id = "";
+                    ResultSet rs1 = DB.DB.search("select idsubjects from subjects where name='" + subject1 + "'");
+                    if (rs1.first()) {
+                        subject1id = rs1.getString(1);
+                    }
+                    ResultSet rs2 = DB.DB.search("select idsubjects from subjects where name='" + subject2 + "'");
+                    if (rs2.first()) {
+                        subject2id = rs2.getString(1);
+                    }
+                    DB.DB.iud("update parallel set start_time='" + starttime + "', date='" + day + "', duration='" + duration + "', subjects1='" + subject1id + "', subjects2='" + subject2id + "' where idparallel='" + parallelid + "'");
+                    JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
+                    loadTableData();
+                    clearFields();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        deleteSession();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
+     
+        this.dispose();
+    }//GEN-LAST:event_btn_ExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,11 +293,75 @@ public class UDParallel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Exit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField pday;
+    private javax.swing.JTextField pduration;
+    private javax.swing.JTextField pstarttime;
+    private javax.swing.JComboBox<String> psubject1;
+    private javax.swing.JComboBox<String> psubject2;
     // End of variables declaration//GEN-END:variables
+private void loadSubjects() {
+        try {
+            psubject1.addItem("<-Select->");
+            psubject2.addItem("<-Select->");
+            ResultSet rs = DB.DB.search("select distinct name from subjects");
+            while (rs.next()) {
+                psubject1.addItem(rs.getString(1));
+                psubject2.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void loadTableData() {
+        try {
+            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            dtm.setRowCount(0);
+            ResultSet rs = DB.DB.search("select p.idparallel,p.start_time,p.date,p.duration,s1.name,s2.name from parallel p join subjects s1 on p.subjects1=s1.idsubjects join subjects s2 on p.subjects2=s2.idsubjects where p.status!='deactive'");
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                dtm.addRow(v);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        pstarttime.setText("");
+        pday.setText("");
+        pduration.setText("");
+        psubject1.setSelectedItem("<-Select->");
+        psubject2.setSelectedItem("<-Select->");
+    }
+
+    private void deleteSession() {
+        try {
+            DB.DB.iud("update parallel set status='deactive' where idparallel='" + parallelid + "'");
+            JOptionPane.showMessageDialog(rootPane, "Successfully Deleted");
+            loadTableData();
+            clearFields();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

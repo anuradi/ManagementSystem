@@ -78,135 +78,83 @@ public class SesssionAllocation extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         subject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjectActionPerformed(evt);
             }
         });
+        jPanel1.add(subject, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 91, 175, -1));
 
         jLabel2.setText("Lecture 1");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 91, -1, -1));
 
         jLabel3.setText("Lecture 2");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 121, -1, -1));
 
         jLabel4.setText("Subject Code");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 153, -1, -1));
 
         jLabel5.setText("Subject");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 99, -1, -1));
 
         jLabel6.setText("Group ID");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 129, -1, -1));
 
         jLabel7.setText("Tag");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 159, -1, -1));
+
+        jPanel1.add(lecturer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 121, 170, -1));
+
+        lecturer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lecturer1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(lecturer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 90, 170, -1));
 
         groupid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 groupidActionPerformed(evt);
             }
         });
+        jPanel1.add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 123, 174, -1));
 
-        addsession.setBackground(new java.awt.Color(0, 0, 0));
-        addsession.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(tags, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 156, 174, -1));
+
+        addsession.setBackground(new java.awt.Color(0, 153, 255));
         addsession.setText("Add Sessions");
+        addsession.setBorderPainted(false);
         addsession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addsessionActionPerformed(evt);
             }
         });
+        jPanel1.add(addsession, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(204, 255, 204));
         jButton2.setText("View");
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 110, -1));
 
         subjectcode.setEditable(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(groupid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tags, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(addsession)
-                                .addGap(135, 135, 135)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lecturer1, 0, 170, Short.MAX_VALUE)
-                                    .addComponent(subjectcode))))
-                        .addGap(0, 150, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4))
-                    .addGap(18, 18, 18)
-                    .addComponent(lecturer2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(30, 30, 30)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel7))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                    .addComponent(subject, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(lecturer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(groupid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(subjectcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addsession)
-                    .addComponent(jButton2))
-                .addGap(26, 26, 26))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(91, 91, 91)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(16, 16, 16)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(lecturer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10)
-                            .addComponent(jLabel4)
-                            .addContainerGap(98, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(subject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(60, 60, 60))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(16, 16, 16)
-                                    .addComponent(jLabel6)
-                                    .addGap(16, 16, 16)
-                                    .addComponent(jLabel7)))
-                            .addContainerGap(92, Short.MAX_VALUE)))))
-        );
+        jPanel1.add(subjectcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 157, 170, -1));
 
         jTabbedPane1.addTab("Consecutive", jPanel1);
+
+        jpdu.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setText("Start time");
 
@@ -218,39 +166,45 @@ public class SesssionAllocation extends javax.swing.JFrame {
 
         jLabel12.setText("Subject 2");
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(0, 153, 255));
         jButton3.setText("Add Sessions");
+        jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setBackground(new java.awt.Color(204, 255, 204));
         jButton4.setText("View");
+        jButton4.setBorderPainted(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpduLayout = new javax.swing.GroupLayout(jpdu);
         jpdu.setLayout(jpduLayout);
         jpduLayout.setHorizontalGroup(
             jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpduLayout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jButton3)
-                .addGap(82, 82, 82)
-                .addComponent(jButton4)
-                .addContainerGap(217, Short.MAX_VALUE))
-            .addGroup(jpduLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(duration)
-                    .addComponent(start_time)
-                    .addComponent(day, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(subject2_parallel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(subject1_parallel, 0, 170, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpduLayout.createSequentialGroup()
+                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpduLayout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(duration)
+                            .addComponent(start_time)
+                            .addComponent(day, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
+                    .addGroup(jpduLayout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jButton3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(subject2_parallel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(subject1_parallel, 0, 170, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
             .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpduLayout.createSequentialGroup()
@@ -278,11 +232,11 @@ public class SesssionAllocation extends javax.swing.JFrame {
                     .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap())
+                    .addComponent(jButton4)
+                    .addComponent(jButton3))
+                .addGap(38, 38, 38))
             .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpduLayout.createSequentialGroup()
                     .addGap(91, 91, 91)
@@ -302,6 +256,8 @@ public class SesssionAllocation extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Parallel", jpdu);
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel14.setText("Subject 1");
 
         jLabel15.setText("Subject 2");
@@ -310,14 +266,23 @@ public class SesssionAllocation extends javax.swing.JFrame {
 
         jLabel17.setText("Subject 4");
 
+        jButton5.setBackground(new java.awt.Color(0, 153, 255));
         jButton5.setText("Add Sessions");
+        jButton5.setBorderPainted(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(204, 255, 204));
         jButton6.setText("View");
+        jButton6.setBorderPainted(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -329,22 +294,20 @@ public class SesssionAllocation extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(jLabel15))
                 .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(subject1_nonover, 0, 148, Short.MAX_VALUE)
-                        .addComponent(subject2_nonover, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton5))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(subject1_nonover, 0, 148, Short.MAX_VALUE)
+                    .addComponent(subject2_nonover, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(subject3_nonover, 0, 170, Short.MAX_VALUE)
-                            .addComponent(subject4_nonover, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jButton6))
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(subject3_nonover, 0, 170, Short.MAX_VALUE)
+                        .addComponent(subject4_nonover, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -372,10 +335,12 @@ public class SesssionAllocation extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Non Overlapping", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -390,31 +355,26 @@ public class SesssionAllocation extends javax.swing.JFrame {
 
         jTabbedPane1.addTab(" Not Available Times", jPanel4);
 
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 83, -1, 291));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Sessions And Not Available Time Allocations");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 21, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -437,40 +397,53 @@ public class SesssionAllocation extends javax.swing.JFrame {
 
     private void addsessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsessionActionPerformed
         try {
-            String lectur1 = lecturer1.getSelectedItem().toString();
-            String lectur2 = lecturer2.getSelectedItem().toString();
-            String subject = subjectcode.getText();
-            String group = groupid.getSelectedItem().toString();
-            String tag = tags.getSelectedItem().toString();
-            String lec1id="";
-            String lec2id="";
-            String subid="";
-            String groupid="";
-            String tagid="";
-            ResultSet rs1 = DB.DB.search("select idlecturer from lecturer where name='" + lectur1 + "'");
-            if (rs1.first()) {
-                lec1id=rs1.getString(1);
+            if (lecturer1.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the lecturer 1");
+            } else if (lecturer2.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the lecturer 2");
+            } else if (subjectcode.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Subject code is empty");
+            } else if (groupid.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select Group ID");
+            } else if (tags.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select Tag");
+            } else {
+                String lectur1 = lecturer1.getSelectedItem().toString();
+                String lectur2 = lecturer2.getSelectedItem().toString();
+                String subject = subjectcode.getText();
+                String group = groupid.getSelectedItem().toString();
+                String tag = tags.getSelectedItem().toString();
+                String lec1id = "";
+                String lec2id = "";
+                String subid = "";
+                String groupid = "";
+                String tagid = "";
+                ResultSet rs1 = DB.DB.search("select idlecturer from lecturer where name='" + lectur1 + "'");
+                if (rs1.first()) {
+                    lec1id = rs1.getString(1);
+                }
+                ResultSet rs2 = DB.DB.search("select idlecturer from lecturer where name='" + lectur2 + "'");
+                if (rs2.first()) {
+                    lec2id = rs2.getString(1);
+                }
+                ResultSet rs3 = DB.DB.search("select idsubjects from subjects where code='" + subject + "'");
+                if (rs3.first()) {
+                    subid = rs3.getString(1);
+                }
+
+                ResultSet rs4 = DB.DB.search("select idstudent_groups from student_groups where groups_id='" + group + "'");
+                if (rs4.first()) {
+                    groupid = rs4.getString(1);
+                }
+
+                ResultSet rs5 = DB.DB.search("select idtags from tags where name='" + tag + "'");
+                if (rs5.first()) {
+                    tagid = rs5.getString(1);
+                }
+                DB.DB.iud("insert into consecutive (subject, group_id, lecturer1, lecturer2, tag,status) values ('" + subid + "','" + groupid + "','" + lec1id + "','" + lec2id + "','" + tagid + "', 'Active')");
+                JOptionPane.showMessageDialog(rootPane, "Successfully Saved");
+                clearfields();
             }
-            ResultSet rs2 = DB.DB.search("select idlecturer from lecturer where name='" + lectur2 + "'");
-            if (rs2.first()) {
-                lec2id=rs2.getString(1);
-            }
-            ResultSet rs3 = DB.DB.search("select idsubjects from subjects where code='" + subject + "'");
-            if (rs3.first()) {
-                subid=rs3.getString(1);
-            }
-            
-            ResultSet rs4 = DB.DB.search("select idstudent_groups from student_groups where groups_id='" + group + "'");
-            if (rs4.first()) {
-                groupid=rs4.getString(1);
-            }
-            
-            ResultSet rs5 = DB.DB.search("select idtags from tags where name='" + tag + "'");
-            if (rs5.first()) {
-                tagid=rs5.getString(1);
-            }
-            DB.DB.iud("insert into consecutive (subject, group_id, lecturer1, lecturer2, tags_id) values ('"+subid+"','"+groupid+"','"+lec1id+"','"+lec2id+"','"+tagid+"')");
-            JOptionPane.showMessageDialog(rootPane, "Successfully Saved");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -478,21 +451,34 @@ public class SesssionAllocation extends javax.swing.JFrame {
     }//GEN-LAST:event_addsessionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         try {
-             String subject1 = subject1_parallel.getSelectedItem().toString();
-             String subject2 = subject2_parallel.getSelectedItem().toString();
-            String sub1id="";
-            String sub2id="";
-            ResultSet rs1 = DB.DB.search("select idsubjects from subjects where name='" + subject1 + "'");
-            if (rs1.first()) {
-                sub1id=rs1.getString(1);
+        try {
+            if (subject1_parallel.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the subject 1");
+            } else if (subject2_parallel.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the subject 2");
+            } else if (start_time.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Start time is empty");
+            } else if (day.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Day is empty");
+            } else if (duration.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Duration is empty");
+            } else {
+                String subject1 = subject1_parallel.getSelectedItem().toString();
+                String subject2 = subject2_parallel.getSelectedItem().toString();
+                String sub1id = "";
+                String sub2id = "";
+                ResultSet rs1 = DB.DB.search("select idsubjects from subjects where name='" + subject1 + "'");
+                if (rs1.first()) {
+                    sub1id = rs1.getString(1);
+                }
+                ResultSet rs2 = DB.DB.search("select idsubjects from subjects where name='" + subject2 + "'");
+                if (rs2.first()) {
+                    sub2id = rs2.getString(1);
+                }
+                DB.DB.iud("insert into parallel (start_time, date, duration, subjects1, subjects2,status) values ('" + start_time.getText() + "','" + day.getText() + "','" + duration.getText() + "','" + sub1id + "','" + sub2id + "', 'Active')");
+                JOptionPane.showMessageDialog(rootPane, "Successfully Saved");
+                clearfields();
             }
-            ResultSet rs2 = DB.DB.search("select idsubjects from subjects where name='" + subject2 + "'");
-            if (rs2.first()) {
-                sub2id=rs2.getString(1);
-            }
-            DB.DB.iud("insert into parallel (start_time, date, duration, subjects1, subjects2) values ('"+start_time.getText()+"','"+day.getText()+"','"+duration.getText()+"','"+sub1id+"','"+sub2id+"')");
-            JOptionPane.showMessageDialog(rootPane, "Successfully Saved");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -500,39 +486,66 @@ public class SesssionAllocation extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
-            String subject1 = subject1_nonover.getSelectedItem().toString();
-            String subject2 = subject2_nonover.getSelectedItem().toString();
-            String subject3 = subject3_nonover.getSelectedItem().toString();
-            String subject4 = subject4_nonover.getSelectedItem().toString();
-            String sub1id="";
-            String sub2id="";
-            String sub3id="";
-            String sub4id="";
-            ResultSet rs1 = DB.DB.search("select idsubjects from subjects where name='" + subject1 + "'");
-            if (rs1.first()) {
-                sub1id=rs1.getString(1);
+            if (subject1_nonover.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the subject 1");
+            } else if (subject2_nonover.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the subject 2");
+            } else if (subject3_nonover.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the subject 3");
+            } else if (subject4_nonover.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the subject 4");
+            } else {
+                String subject1 = subject1_nonover.getSelectedItem().toString();
+                String subject2 = subject2_nonover.getSelectedItem().toString();
+                String subject3 = subject3_nonover.getSelectedItem().toString();
+                String subject4 = subject4_nonover.getSelectedItem().toString();
+                String sub1id = "";
+                String sub2id = "";
+                String sub3id = "";
+                String sub4id = "";
+                ResultSet rs1 = DB.DB.search("select idsubjects from subjects where name='" + subject1 + "'");
+                if (rs1.first()) {
+                    sub1id = rs1.getString(1);
+                }
+                ResultSet rs2 = DB.DB.search("select idsubjects from subjects where name='" + subject2 + "'");
+                if (rs2.first()) {
+                    sub2id = rs2.getString(1);
+                }
+                ResultSet rs3 = DB.DB.search("select idsubjects from subjects where name='" + subject3 + "'");
+                if (rs3.first()) {
+                    sub3id = rs3.getString(1);
+                }
+                ResultSet rs4 = DB.DB.search("select idsubjects from subjects where name='" + subject4 + "'");
+                if (rs4.first()) {
+                    sub4id = rs4.getString(1);
+                }
+                DB.DB.iud("insert into non_overlapping (subjects1, subjects2, subjects3, subjects4,status) values ('" + sub1id + "','" + sub2id + "','" + sub3id + "','" + sub4id + "', 'Active')");
+                JOptionPane.showMessageDialog(rootPane, "Successfully Saved");
             }
-            
-            ResultSet rs2 = DB.DB.search("select idsubjects from subjects where name='" + subject2 + "'");
-            if (rs2.first()) {
-                sub2id=rs2.getString(1);
-            }
-            
-            ResultSet rs3 = DB.DB.search("select idsubjects from subjects where name='" + subject3 + "'");
-            if (rs3.first()) {
-                sub3id=rs3.getString(1);
-            }
-            
-            ResultSet rs4 = DB.DB.search("select idsubjects from subjects where name='" + subject4 + "'");
-            if (rs4.first()) {
-                sub4id=rs4.getString(1);
-            }
-            DB.DB.iud("insert into non_overlapping (subjects1, subjects2, subjects3, subjects4) values ('"+sub1id+"','"+sub2id+"','"+sub3id+"','"+sub4id+"')");
-            JOptionPane.showMessageDialog(rootPane, "Successfully Saved");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      UDConsecutive ud = new UDConsecutive();
+      ud.setVisible(true);
+      
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        UDParallel ud = new UDParallel();
+        ud.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        UDNonOverlapping udn = new UDNonOverlapping();
+        udn.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void lecturer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecturer1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lecturer1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -596,6 +609,7 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -618,6 +632,8 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private void loadLecturer() {
         try {
             ResultSet rs = DB.DB.search("select distinct name from lecturer");
+            lecturer1.addItem("<-Select->");
+            lecturer2.addItem("<-Select->");
             while (rs.next()) {
                 lecturer1.addItem(rs.getString(1));
                 lecturer2.addItem(rs.getString(1));
@@ -629,6 +645,13 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private void loadSubjects() {
         try {
             ResultSet rs = DB.DB.search("select distinct name from subjects");
+            subject.addItem("<-Select->");
+            subject1_parallel.addItem("<-Select->");
+            subject2_parallel.addItem("<-Select->");
+            subject1_nonover.addItem("<-Select->");
+            subject2_nonover.addItem("<-Select->");
+            subject3_nonover.addItem("<-Select->");
+            subject4_nonover.addItem("<-Select->");
             while (rs.next()) {
                 subject.addItem(rs.getString(1));
                 subject1_parallel.addItem(rs.getString(1));
@@ -645,6 +668,7 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private void loadGroupID() {
         try {
             ResultSet rs = DB.DB.search("select distinct groups_id from student_groups");
+            groupid.addItem("<-Select->");
             while (rs.next()) {
                 groupid.addItem(rs.getString(1));
             }
@@ -655,10 +679,30 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private void loadTags() {
         try {
             ResultSet rs = DB.DB.search("select distinct name from tags");
+            tags.addItem("<-Select->");
             while (rs.next()) {
                 tags.addItem(rs.getString(1));
             }
         } catch (Exception e) {
         }
+    }
+
+    private void clearfields() {
+        lecturer1.setSelectedItem("<-Select->");
+        lecturer2.setSelectedItem("<-Select->");
+        subject.setSelectedItem("<-Select->");
+        groupid.setSelectedItem("<-Select->");
+        tags.setSelectedItem("<-Select->");
+        subjectcode.setText("");
+        start_time.setText("");
+        day.setText("");
+        duration.setText("");
+        subject1_parallel.setSelectedItem("<-Select->");
+        subject2_parallel.setSelectedItem("<-Select->");
+        subject1_nonover.setSelectedItem("<-Select->");
+        subject2_nonover.setSelectedItem("<-Select->");
+        subject3_nonover.setSelectedItem("<-Select->");
+        subject4_nonover.setSelectedItem("<-Select->");
+
     }
 }

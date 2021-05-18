@@ -5,17 +5,26 @@
  */
 package SM;
 
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Thilona
  */
 public class UDNonOverlapping extends javax.swing.JFrame {
 
+    String nonoverlappingid = "";
+
     /**
      * Creates new form UDConsecutive
      */
     public UDNonOverlapping() {
         initComponents();
+        loadTableData();
+        loadSubjects();
     }
 
     /**
@@ -30,15 +39,27 @@ public class UDNonOverlapping extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        osubject1 = new javax.swing.JComboBox<>();
+        osubject2 = new javax.swing.JComboBox<>();
+        osubject3 = new javax.swing.JComboBox<>();
+        osubject4 = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        btn_Exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Update And Delete Consecutive Sessions");
+        jLabel1.setText("Update And Delete Non Overlapping Sessions");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 55, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -48,66 +69,183 @@ public class UDNonOverlapping extends javax.swing.JFrame {
                 "ID", "Subject 1", "Subject 2", "Subject 3", "Subject 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 572, 152));
+
+        jLabel2.setText("Subject 1");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 294, -1, -1));
+
+        jLabel3.setText("Subject 2");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 334, -1, -1));
+
+        jLabel4.setText("Subject 3");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 294, -1, -1));
+
+        jLabel5.setText("Subject 4");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 334, -1, -1));
+
+        getContentPane().add(osubject1, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 290, 181, -1));
+
+        getContentPane().add(osubject2, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 330, 181, -1));
+
+        getContentPane().add(osubject3, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 290, 183, -1));
+
+        getContentPane().add(osubject4, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 330, 183, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 255));
         jButton1.setText("Clear");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(153, 204, 255));
         jButton2.setText("Update");
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(255, 204, 102));
         jButton3.setText("Delete");
+        jButton3.setBorderPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jButton1)
-                        .addGap(88, 88, 88)
-                        .addComponent(jButton2)
-                        .addGap(80, 80, 80)
-                        .addComponent(jButton3)))
-                .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(159, 159, 159))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130))))
+        btn_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit.setBorder(null);
+        btn_Exit.setBorderPainted(false);
+        btn_Exit.setContentAreaFilled(false);
+        btn_Exit.setFocusPainted(false);
+        btn_Exit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(btn_Exit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 451, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
+                    .addComponent(jButton1)
                     .addComponent(jButton3))
-                .addGap(51, 51, 51)
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addGap(101, 101, 101))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRow = jTable1.getSelectedRow();
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        if (selectedRow != -1) {
+            osubject1.setSelectedItem(dtm.getValueAt(selectedRow, 1).toString());
+            osubject2.setSelectedItem(dtm.getValueAt(selectedRow, 2).toString());
+            osubject3.setSelectedItem(dtm.getValueAt(selectedRow, 3).toString());
+            osubject4.setSelectedItem(dtm.getValueAt(selectedRow, 4).toString());
+            nonoverlappingid = dtm.getValueAt(selectedRow, 0).toString();
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            int selectedRow = jTable1.getSelectedRow();
+            if (selectedRow != -1) {
+                if (osubject1.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select the subject 1");
+                } else if (osubject2.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select the subject 2");
+                } else if (osubject3.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select the subject 3");
+                } else if (osubject4.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select the subject 4");
+                } else {
+                    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                    String subject1 = osubject1.getSelectedItem().toString();
+                    String subject2 = osubject2.getSelectedItem().toString();
+                    String subject3 = osubject3.getSelectedItem().toString();
+                    String subject4 = osubject4.getSelectedItem().toString();
+                    String subject1id = "";
+                    String subject2id = "";
+                    String subject3id = "";
+                    String subject4id = "";
+                    ResultSet rs1 = DB.DB.search("select idsubjects from subjects where name='" + subject1 + "'");
+                    if (rs1.first()) {
+                        subject1id = rs1.getString(1);
+                    }
+                    ResultSet rs2 = DB.DB.search("select idsubjects from subjects where name='" + subject2 + "'");
+                    if (rs2.first()) {
+                        subject2id = rs2.getString(1);
+                    }
+                    ResultSet rs3 = DB.DB.search("select idsubjects from subjects where name='" + subject3 + "'");
+                    if (rs3.first()) {
+                        subject3id = rs3.getString(1);
+                    }
+                    ResultSet rs4 = DB.DB.search("select idsubjects from subjects where name='" + subject4 + "'");
+                    if (rs4.first()) {
+                        subject4id = rs4.getString(1);
+                    }
+                    DB.DB.iud("update non_overlapping set subjects1='" + subject1id + "', subjects2='" + subject2id + "', subjects2='" + subject3id + "', subjects3='" + subject3id + "', subjects4='" + subject4id + "' where idnon_overlapping='" + nonoverlappingid + "'");
+                    JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
+                    loadTableData();
+                    clearFields();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        deleteSession();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_btn_ExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,12 +286,75 @@ public class UDNonOverlapping extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Exit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> osubject1;
+    private javax.swing.JComboBox<String> osubject2;
+    private javax.swing.JComboBox<String> osubject3;
+    private javax.swing.JComboBox<String> osubject4;
     // End of variables declaration//GEN-END:variables
+
+    private void loadSubjects() {
+        try {
+            osubject1.addItem("<-Select->");
+            osubject2.addItem("<-Select->");
+            osubject3.addItem("<-Select->");
+            osubject4.addItem("<-Select->");
+            ResultSet rs = DB.DB.search("select distinct name from subjects");
+            while (rs.next()) {
+                osubject1.addItem(rs.getString(1));
+                osubject2.addItem(rs.getString(1));
+                osubject3.addItem(rs.getString(1));
+                osubject4.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void loadTableData() {
+        try {
+            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            dtm.setRowCount(0);
+            ResultSet rs = DB.DB.search("select no.idnon_overlapping,s1.name,s2.name,s3.name,s4.name from non_overlapping no join subjects s1 on no.subjects1=s1.idsubjects join subjects s2 on no.subjects2=s2.idsubjects join subjects s3 on no.subjects3=s3.idsubjects join subjects s4 on no.subjects4=s4.idsubjects where no.status!='deactive'");
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                dtm.addRow(v);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteSession() {
+        try {
+            DB.DB.iud("update non_overlapping set status='deactive' where idnon_overlapping='" + nonoverlappingid + "'");
+            JOptionPane.showMessageDialog(rootPane, "Successfully Deleted");
+            loadTableData();
+            clearFields();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        osubject1.setSelectedItem("<-Select->");
+        osubject2.setSelectedItem("<-Select->");
+        osubject3.setSelectedItem("<-Select->");
+        osubject4.setSelectedItem("<-Select->");
+    }
 }

@@ -50,14 +50,17 @@ public class ManageSGroups extends javax.swing.JFrame {
         subgroupno = new javax.swing.JComboBox<>();
         groupid = new javax.swing.JTextField();
         subgroupid = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         clear = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Manage Student Groups");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 30, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,134 +77,72 @@ public class ManageSGroups extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 65, 590, 167));
+
         jLabel2.setText("Academic Year Semester");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jLabel3.setText("Programme");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         jLabel4.setText("Group No");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
         jLabel5.setText("Sub Group No");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 266, -1, -1));
 
         jLabel6.setText("Group ID");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 296, -1, -1));
 
         jLabel7.setText("Sub Group ID");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 326, -1, -1));
+        getContentPane().add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 260, 170, -1));
 
         program.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "CS" }));
+        getContentPane().add(program, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 290, 170, -1));
 
         groupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        getContentPane().add(groupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 320, 170, -1));
 
         subgroupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        getContentPane().add(subgroupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 170, -1));
+        getContentPane().add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 170, -1));
+        getContentPane().add(subgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, -1));
 
-        clear.setBackground(new java.awt.Color(0, 0, 0));
-        clear.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        clear.setBackground(new java.awt.Color(255, 204, 255));
         clear.setText("Clear");
+        clear.setBorderPainted(false);
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearActionPerformed(evt);
             }
         });
+        jPanel1.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 110, -1));
 
-        delete.setBackground(new java.awt.Color(0, 0, 0));
-        delete.setForeground(new java.awt.Color(255, 255, 255));
+        delete.setBackground(new java.awt.Color(255, 204, 102));
         delete.setText("Delete");
+        delete.setBorderPainted(false);
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
             }
         });
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 120, -1));
 
-        update.setBackground(new java.awt.Color(0, 0, 0));
-        update.setForeground(new java.awt.Color(255, 255, 255));
+        update.setBackground(new java.awt.Color(153, 204, 255));
         update.setText("Upade");
+        update.setBorderPainted(false);
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
             }
         });
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 120, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(clear)
-                        .addGap(117, 117, 117)
-                        .addComponent(delete)
-                        .addGap(114, 114, 114)
-                        .addComponent(update))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(program, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(groupno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(subgroupno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(groupid, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(subgroupid, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(program, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(groupno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(subgroupno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(groupid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(subgroupid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addGap(16, 16, 16)
-                            .addComponent(jLabel6)
-                            .addGap(16, 16, 16)
-                            .addComponent(jLabel7))))
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clear)
-                    .addComponent(delete)
-                    .addComponent(update))
-                .addContainerGap(188, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -222,20 +163,7 @@ public class ManageSGroups extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        int selectedRow = jTable1.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Please select a row");
-        } else {
-            try {
-                DB.DB.iud("delete from student_groups where idstudent_groups='" + dtm.getValueAt(selectedRow, 0) + "'");
-                JOptionPane.showMessageDialog(rootPane, "Deleted successfully");
-                loadData();
-            } catch (Exception ex) {
-                Logger.getLogger(ManageSGroups.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(rootPane, "Cannot delete this item");
-            }
-        }
+        deleteTags();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
@@ -302,6 +230,7 @@ public class ManageSGroups extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> program;
@@ -313,7 +242,7 @@ public class ManageSGroups extends javax.swing.JFrame {
 
     private void loadData() {
         try {
-            ResultSet rs = DB.DB.search("select * from student_groups");
+            ResultSet rs = DB.DB.search("select * from student_groups where status!='deactive'");
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
             while (rs.next()) {
@@ -339,5 +268,23 @@ public class ManageSGroups extends javax.swing.JFrame {
         subgroupno.setSelectedIndex(0);
         groupid.setText("");
         subgroupid.setText("");
+    }
+
+    private void deleteTags() {
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Please select a row");
+        } else {
+            try {
+                DB.DB.iud("update student_groups set status='deactive' where idstudent_groups='" + dtm.getValueAt(selectedRow, 0) + "'");
+                JOptionPane.showMessageDialog(rootPane, "Deleted successfully");
+                loadData();
+                clearFields();
+            } catch (Exception ex) {
+                Logger.getLogger(ManageSGroups.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(rootPane, "Cannot delete this item");
+            }
+        }
     }
 }

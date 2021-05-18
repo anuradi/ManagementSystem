@@ -5,17 +5,29 @@
  */
 package SM;
 
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Thilona
  */
 public class UDConsecutive extends javax.swing.JFrame {
 
+    String consecutiveid = "";
+
     /**
      * Creates new form UDConsecutive
      */
     public UDConsecutive() {
         initComponents();
+        loadTableData();
+        loadLecturer();
+        loadSubjects();
+        loadGroupID();
+        loadTags();
     }
 
     /**
@@ -30,14 +42,31 @@ public class UDConsecutive extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        clecturer1 = new javax.swing.JComboBox<>();
+        clecturer2 = new javax.swing.JComboBox<>();
+        csubjectcode = new javax.swing.JTextField();
+        csubject = new javax.swing.JComboBox<>();
+        cgroupid = new javax.swing.JComboBox<>();
+        ctag = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btn_Exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Update And Delete Consecutive Sessions");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 55, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -47,59 +76,217 @@ public class UDConsecutive extends javax.swing.JFrame {
                 "ID", "Lecture 1", "Lecture 2", "Subject Code", "Subject", "Group iD", "Tag"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 572, 152));
+
+        jLabel2.setText("Lecturer1");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 287, -1, -1));
+
+        jLabel3.setText("Lecturer2");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 327, -1, -1));
+
+        jLabel4.setText("Subject Code");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 367, -1, -1));
+
+        jLabel5.setText("Subject Name");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 287, -1, -1));
+
+        jLabel6.setText("Group ID");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 327, -1, -1));
+
+        jLabel7.setText("Tag");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 367, -1, -1));
+
+        getContentPane().add(clecturer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 283, 160, -1));
+
+        getContentPane().add(clecturer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 323, 160, -1));
+        getContentPane().add(csubjectcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 364, 160, -1));
+
+        csubject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csubjectActionPerformed(evt);
+            }
+        });
+        getContentPane().add(csubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 283, 193, -1));
+
+        getContentPane().add(cgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 323, 193, -1));
+
+        getContentPane().add(ctag, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 363, 193, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 255));
         jButton1.setText("Clear");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(153, 204, 255));
         jButton2.setText("Update");
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(255, 204, 102));
         jButton3.setText("Delete");
+        jButton3.setBorderPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(159, 159, 159))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jButton1)
-                        .addGap(88, 88, 88)
-                        .addComponent(jButton2)
-                        .addGap(80, 80, 80)
-                        .addComponent(jButton3)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+        btn_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit.setBorder(null);
+        btn_Exit.setBorderPainted(false);
+        btn_Exit.setContentAreaFilled(false);
+        btn_Exit.setFocusPainted(false);
+        btn_Exit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(btn_Exit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
+                .addGap(86, 86, 86))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 610));
+        jPanel1.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        loadTableData();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            int selectedRow = jTable1.getSelectedRow();
+            if (selectedRow != -1) {
+                if (clecturer1.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select the lecturer 1");
+                } else if (clecturer2.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select the lecturer 2");
+                } else if (csubjectcode.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(rootPane, "Subject code is empty");
+                } else if (cgroupid.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select Group ID");
+                } else if (ctag.getSelectedItem().toString().equals("<-Select->")) {
+                    JOptionPane.showMessageDialog(rootPane, "Select Tag");
+                } else {
+                    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                    String lec1 = clecturer1.getSelectedItem().toString();
+                    String lec2 = clecturer2.getSelectedItem().toString();
+                    String code = csubjectcode.getText();
+                    String subject = csubject.getSelectedItem().toString();
+                    String groupid = cgroupid.getSelectedItem().toString();
+                    String tag = ctag.getSelectedItem().toString();
+                    String subjectid = "";
+                    String lec1id = "";
+                    String lec2id = "";
+                    String tagsid = "";
+                    ResultSet rs1 = DB.DB.search("select idsubjects from subjects where name='" + subject + "'");
+                    if (rs1.first()) {
+                        subjectid = rs1.getString(1);
+                    }
+                    ResultSet rs2 = DB.DB.search("select idlecturer from lecturer where name='" + lec1 + "'");
+                    if (rs2.first()) {
+                        lec1id = rs2.getString(1);
+                    }
+                    ResultSet rs3 = DB.DB.search("select idlecturer from lecturer where name='" + lec2 + "'");
+                    if (rs3.first()) {
+                        lec2id = rs3.getString(1);
+                    }
+
+                    ResultSet rs4 = DB.DB.search("select idtags from tags where name='" + tag + "'");
+                    if (rs4.first()) {
+                        tagsid = rs4.getString(1);
+                    }
+                    DB.DB.iud("update consecutive set subject='" + subjectid + "', group_id='" + groupid + "', lecturer1='" + lec1id + "', lecturer2='" + lec2id + "', tags_id='" + tagsid + "' where idconsecutive='" + consecutiveid + "'");
+                    JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
+                    loadTableData();
+                    clearFields();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void csubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csubjectActionPerformed
+        if (csubject.getSelectedItem() != null) {
+            try {
+                ResultSet rs = DB.DB.search("select distinct code from subjects where name='" + csubject.getSelectedItem().toString() + "'");
+                if (rs.first()) {
+                    csubjectcode.setText(rs.getString(1));
+                }
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_csubjectActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRow = jTable1.getSelectedRow();
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        if (selectedRow != -1) {
+            clecturer1.setSelectedItem(dtm.getValueAt(selectedRow, 1).toString());
+            clecturer2.setSelectedItem(dtm.getValueAt(selectedRow, 2).toString());
+            csubjectcode.setText(dtm.getValueAt(selectedRow, 3).toString());
+            csubject.setSelectedItem(dtm.getValueAt(selectedRow, 4).toString());
+            cgroupid.setSelectedItem(dtm.getValueAt(selectedRow, 5).toString());
+            ctag.setSelectedItem(dtm.getValueAt(selectedRow, 6).toString());
+            consecutiveid = dtm.getValueAt(selectedRow, 0).toString();
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        deleteSession();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_ExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,11 +324,112 @@ public class UDConsecutive extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Exit;
+    private javax.swing.JComboBox<String> cgroupid;
+    private javax.swing.JComboBox<String> clecturer1;
+    private javax.swing.JComboBox<String> clecturer2;
+    private javax.swing.JComboBox<String> csubject;
+    private javax.swing.JTextField csubjectcode;
+    private javax.swing.JComboBox<String> ctag;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void loadTableData() {
+        try {
+            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            dtm.setRowCount(0);
+            ResultSet rs = DB.DB.search("select ls.idconsecutive,l1.name,l2.name,s.code,s.name,sg.idstudent_groups,t.name from consecutive ls JOIN lecturer l1 on ls.lecturer1=l1.idlecturer JOIN lecturer l2 on ls.lecturer2=l2.idlecturer JOIN subjects s on ls.subject=s.idsubjects JOIN tags t on ls.tag=t.idtags JOIN student_groups sg on ls.group_id=sg.idstudent_groups where ls.status!='deactive'");
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                dtm.addRow(v);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadLecturer() {
+        try {
+            clecturer1.addItem("<-Select->");
+            clecturer2.addItem("<-Select->");
+            ResultSet rs = DB.DB.search("select distinct name from lecturer");
+            while (rs.next()) {
+                clecturer1.addItem(rs.getString(1));
+                clecturer2.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void loadSubjects() {
+        try {
+            csubject.addItem("<-Select->");
+            ResultSet rs = DB.DB.search("select distinct name from subjects");
+            while (rs.next()) {
+                csubject.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void loadGroupID() {
+        try {
+            cgroupid.addItem("<-Select->");
+            ResultSet rs = DB.DB.search("select distinct groups_id from student_groups");
+            while (rs.next()) {
+                cgroupid.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void loadTags() {
+        try {
+            ctag.addItem("<-Select->");
+            ResultSet rs = DB.DB.search("select distinct name from tags");
+            while (rs.next()) {
+                ctag.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void deleteSession() {
+        try {
+            DB.DB.iud("update consecutive set status='deactive' where idconsecutive='" + consecutiveid + "'");
+            JOptionPane.showMessageDialog(rootPane, "Successfully Deleted");
+            loadTableData();
+            clearFields();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        clecturer1.setSelectedItem("<-Select->");
+        clecturer2.setSelectedItem("<-Select->");
+        csubject.setSelectedItem("<-Select->");
+        cgroupid.setSelectedItem("<-Select->");
+        ctag.setSelectedItem("<-Select->");
+        csubjectcode.setText("");
+    }
 }

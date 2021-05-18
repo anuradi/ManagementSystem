@@ -52,8 +52,11 @@ public class AddSession extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         clear = new javax.swing.JButton();
         submit = new javax.swing.JButton();
+        btn_Exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -122,9 +125,23 @@ public class AddSession extends javax.swing.JFrame {
         });
         jPanel1.add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 110, -1));
 
+        btn_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit.setBorder(null);
+        btn_Exit.setBorderPainted(false);
+        btn_Exit.setContentAreaFilled(false);
+        btn_Exit.setFocusPainted(false);
+        btn_Exit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 40, 25));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 610));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
@@ -195,6 +212,11 @@ public class AddSession extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ssubjectActionPerformed
 
+    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_btn_ExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,6 +253,7 @@ public class AddSession extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Exit;
     private javax.swing.JButton clear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

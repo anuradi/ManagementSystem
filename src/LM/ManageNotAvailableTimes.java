@@ -9,6 +9,7 @@ import com.mysql.jdbc.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,8 +28,37 @@ public class ManageNotAvailableTimes extends javax.swing.JFrame {
      */
     public ManageNotAvailableTimes() {
         initComponents();
+        loadTableData();
     }
-
+public void loadTableData(){
+             try {
+            con = (Connection) DBconnection.getConnection();
+            stmt = con.createStatement();
+            String sql = "SELECT not_available_time.notAvailbleTime_id,not_available_time.time, lecturer.name,student_groups.groupno,student_groups.subgroupno,student_groups.sub_groups_id,not_available_rooms.room,not_available_rooms.startTime,not_available_rooms.endTime FROM not_available_time INNER JOIN lecturer ON not_available_time.lecturer_id = lecturer.idlecturer INNER JOIN student_groups ON not_available_time.group_id = student_groups.idstudent_groups INNER JOIN not_available_rooms ON not_available_time.notavailableroom_id = not_available_rooms.notAvlRoom_id";
+            rs = stmt.executeQuery(sql);
+             DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
+             tableModel.setRowCount(0);
+             
+            while (rs.next()) {
+               Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(8));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                
+              
+              tableModel.addRow(v);
+             
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+             JOptionPane.showMessageDialog(null, e);
+        }
+    
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,13 +82,13 @@ public class ManageNotAvailableTimes extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Duration", "Lecturer", "Group", "Sub Group", "Subject Name", "Group ID", "Room"
+                "ID", "Duration", "Lecturer", "Group", "Sub Group", "Group ID", "Room"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -89,13 +119,13 @@ public class ManageNotAvailableTimes extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(52, 52, 52)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(183, 183, 183)
+                .addGap(209, 209, 209)
                 .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,13 +133,13 @@ public class ManageNotAvailableTimes extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(refreshBtn)
+                    .addComponent(jButton1)
                     .addComponent(jButton3))
-                .addGap(24, 24, 24))
+                .addGap(127, 127, 127))
         );
 
         pack();

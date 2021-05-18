@@ -7,6 +7,8 @@ package LM;
 
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,6 +40,7 @@ public class Session extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         view = new javax.swing.JButton();
         addsession = new javax.swing.JButton();
+        addsession1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,17 +67,32 @@ public class Session extends javax.swing.JFrame {
         view.setBackground(new java.awt.Color(204, 255, 204));
         view.setText("View");
         view.setBorderPainted(false);
-        jPanel1.add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 130, 30));
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
+        jPanel1.add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 130, 30));
 
-        addsession.setBackground(new java.awt.Color(153, 204, 255));
-        addsession.setText("Add Session");
+        addsession.setBackground(new java.awt.Color(255, 255, 0));
+        addsession.setText("Manage Session");
         addsession.setBorderPainted(false);
         addsession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addsessionActionPerformed(evt);
             }
         });
-        jPanel1.add(addsession, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 130, 30));
+        jPanel1.add(addsession, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 130, 30));
+
+        addsession1.setBackground(new java.awt.Color(153, 204, 255));
+        addsession1.setText("Add Session");
+        addsession1.setBorderPainted(false);
+        addsession1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addsession1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addsession1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 130, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
@@ -82,8 +100,18 @@ public class Session extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addsessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsessionActionPerformed
-         // TODO add your handling code here:
+        ManageSession As = new ManageSession();
+        As.setVisible(true);
     }//GEN-LAST:event_addsessionActionPerformed
+
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+       loadTableData();
+    }//GEN-LAST:event_viewActionPerformed
+
+    private void addsession1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsession1ActionPerformed
+       AddSession as = new AddSession();
+       as.setVisible(true);
+    }//GEN-LAST:event_addsession1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,6 +151,7 @@ public class Session extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addsession;
+    private javax.swing.JButton addsession1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -28,6 +28,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         initComponents();
         DBconnection.getConnection();
         loadID();
+        jWorkingDay.addItem("<select>");
         
     }
     public void loadID(){  // load data to interface
@@ -47,6 +48,33 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         
         
         }
+    public void clearFields(){
+         jHours.setSelectedIndex(0);
+       jMinutes.setSelectedIndex(0);
+       jWorkingDay.setSelectedIndex(0);
+      if( jMonday.isSelected() == true){
+          jMonday.setSelected(false);
+      }
+      if( jTuesday.isSelected() == true){
+          jTuesday.setSelected(false);
+      }
+      if( jWendnesday.isSelected() == true){
+          jWendnesday.setSelected(false);
+      }
+      if( jThursday.isSelected() == true){
+          jThursday.setSelected(false);
+      }
+      if( jFriday.isSelected() == true){
+          jFriday.setSelected(false);
+      }
+      if( jSatureday.isSelected() == true){
+          jSatureday.setSelected(false);
+      }
+      if( jSunday.isSelected() == true){
+          jSunday.setSelected(false);
+      }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,7 +124,7 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         jLabel2.setText("Numbers of Working Days");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        jWorkingDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
+        jWorkingDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "1", "2", "3", "4", "5", "6", "7" }));
         jWorkingDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jWorkingDayActionPerformed(evt);
@@ -163,10 +191,10 @@ public class WorkingDaysHours extends javax.swing.JFrame {
         jLabel4.setText("Working Time per Day");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 70, 150, 20));
 
-        jHours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jHours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(jHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 80, -1));
 
-        jMinutes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" }));
+        jMinutes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" }));
         getContentPane().add(jMinutes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 80, -1));
 
         jLabel5.setText("Hours");
@@ -261,51 +289,59 @@ public class WorkingDaysHours extends javax.swing.JFrame {
     private void jAddbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddbtnActionPerformed
         
       //add button
-        String noWorkingDays = (String)jWorkingDay.getSelectedItem(); 
-        int monday = 0;
-        int tuesday  = 0;
-        int wednesday = 0;
-        int thursday = 0;
-        int friday = 0;
-        int saturday = 0;
-        int sunday = 0;
-        if(jMonday.isSelected()){
-            monday = 1;
-        }
-         if(jTuesday.isSelected()){
-            tuesday = 1;
-        } 
-         if(jWendnesday.isSelected()){
-            wednesday = 1;
-        }
-          if(jThursday.isSelected()){
-            thursday = 1;
-        }
-           if(jFriday.isSelected()){
-            friday = 1;
-        }
-            if(jSatureday.isSelected()){
-            saturday = 1;
-        }
-             if(jSunday.isSelected()){
-            sunday = 1;
-        }
-        String hours = (String)jHours.getSelectedItem(); 
-        String minutes = (String)jMinutes.getSelectedItem();
+      
         try{
+            if (jWorkingDay.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Working Day");
+            }else if(jHours.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Working Hours");
+            }else if(jMinutes.getSelectedItem().toString().equals("<-Select->")) {
+                JOptionPane.showMessageDialog(rootPane, "Select the Working Hours");
+            }else{
+              String noWorkingDays = (String)jWorkingDay.getSelectedItem(); 
+                int monday = 0;
+                int tuesday  = 0;
+                int wednesday = 0;
+                int thursday = 0;
+                int friday = 0;
+                int saturday = 0;
+                int sunday = 0;
+                if(jMonday.isSelected()){
+                    monday = 1;
+                }
+                 if(jTuesday.isSelected()){
+                    tuesday = 1;
+                } 
+                 if(jWendnesday.isSelected()){
+                    wednesday = 1;
+                }
+                  if(jThursday.isSelected()){
+                    thursday = 1;
+                }
+                   if(jFriday.isSelected()){
+                    friday = 1;
+                }
+                    if(jSatureday.isSelected()){
+                    saturday = 1;
+                }
+                     if(jSunday.isSelected()){
+                    sunday = 1;
+                }
+                String hours = (String)jHours.getSelectedItem(); 
+                String minutes = (String)jMinutes.getSelectedItem();
+
               con = (Connection) DBconnection.getConnection();
               stmt = con.createStatement();
               String sql = "INSERT INTO management_system.workingdays(NoDays,monday,tuesday,wendnesday,thursday,friday,satureday,sunday,hour,minute) VALUES ('"+noWorkingDays+"','"+monday+"','"+tuesday+"','"+wednesday+"','"+thursday+"','"+friday+"','"+saturday+"','"+sunday+"','"+hours+"','"+minutes+"')";
               stmt.executeUpdate(sql);
               JOptionPane.showMessageDialog(null, "Successfully Inserted");
-              setVisible(false);
-              new WorkingDaysHours().setVisible(true);
-              
-              
+        
+          
+              clearFields();
+            }   
+               
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "unsuccess");
-              setVisible(false);
-              new WorkingDaysHours().setVisible(true);
+              clearFields();
               e.printStackTrace();
         }
         
@@ -314,31 +350,8 @@ public class WorkingDaysHours extends javax.swing.JFrame {
 
     private void jResetbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jResetbtnActionPerformed
        //Reset button
-       jHours.setSelectedItem(null);
-       jMinutes.setSelectedItem(null);
-       jWorkingDay.setSelectedItem(null);
-      if( jMonday.isSelected() == true){
-          jMonday.setSelected(false);
-      }
-      if( jTuesday.isSelected() == true){
-          jTuesday.setSelected(false);
-      }
-      if( jWendnesday.isSelected() == true){
-          jWendnesday.setSelected(false);
-      }
-      if( jThursday.isSelected() == true){
-          jThursday.setSelected(false);
-      }
-      if( jFriday.isSelected() == true){
-          jFriday.setSelected(false);
-      }
-      if( jSatureday.isSelected() == true){
-          jSatureday.setSelected(false);
-      }
-      if( jSunday.isSelected() == true){
-          jSunday.setSelected(false);
-      }
-     
+      
+             clearFields();
        
     }//GEN-LAST:event_jResetbtnActionPerformed
 

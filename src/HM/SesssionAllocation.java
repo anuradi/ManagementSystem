@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package HM;
+import DB.DB;
 
 import com.mysql.jdbc.Connection;
 import static java.lang.Integer.parseInt;
@@ -41,13 +42,16 @@ public class SesssionAllocation extends javax.swing.JFrame {
         group();
         subGroup();
         selectSession();
-        jTextField1.setEditable(false);
+        roomName();
+   
+       
         
       
     }
     
     public  void lectureName(){
          try {
+             selectLecture.addItem("<-Select->");
             con = (Connection) DBconnection.getConnection();
             stmt = con.createStatement();
             String sql = "SELECT lecturer.name   FROM management_system.lecturer";
@@ -69,6 +73,7 @@ public class SesssionAllocation extends javax.swing.JFrame {
    
      public  void group(){
          try {
+             selectGroup.addItem("<-Select->");
             con = (Connection) DBconnection.getConnection();
             stmt = con.createStatement();
             String sql = "SELECT student_groups.groupno FROM student_groups";
@@ -85,6 +90,7 @@ public class SesssionAllocation extends javax.swing.JFrame {
     }
         public  void subGroup(){
          try {
+             selectSubGroup.addItem("<-Select->");
             con = (Connection) DBconnection.getConnection();
             stmt = con.createStatement();
             String sql = "SELECT student_groups.subgroupno FROM student_groups";
@@ -101,6 +107,7 @@ public class SesssionAllocation extends javax.swing.JFrame {
     }
              public  void selectSession(){
          try {
+             selectSession.addItem("<-Select->");
             con = (Connection) DBconnection.getConnection();
             stmt = con.createStatement();
             String sql = "SELECT session_rooms.idsession_rooms FROM session_rooms";
@@ -115,6 +122,25 @@ public class SesssionAllocation extends javax.swing.JFrame {
         }
         
     }
+            public  void roomName(){
+         try {
+             noAvbleRoom.addItem("<-Select->");
+            con = (Connection) DBconnection.getConnection();
+            stmt = con.createStatement();
+            String sql = "SELECT not_available_rooms.room FROM not_available_rooms";
+            rs = stmt.executeQuery(sql);
+//            jSelectID.removeAllItems();
+            while (rs.next()) {
+              
+               noAvbleRoom.addItem(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); //sessionId
+        }
+        
+    }
+                 
+                 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,10 +206,9 @@ public class SesssionAllocation extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        setLecId = new javax.swing.JButton();
         timeJText = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        noAvbleRoom = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -551,21 +576,18 @@ public class SesssionAllocation extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jLabel24.setText("Room Name");
+
+        noAvbleRoom.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                noAvbleRoomItemStateChanged(evt);
             }
         });
-
-        setLecId.setText("search");
-        setLecId.addActionListener(new java.awt.event.ActionListener() {
+        noAvbleRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setLecIdActionPerformed(evt);
+                noAvbleRoomlecturejCbox(evt);
             }
         });
-
-        jLabel23.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel23.setText("*Click Search button  ");
 
         javax.swing.GroupLayout lecidLayout = new javax.swing.GroupLayout(lecid);
         lecid.setLayout(lecidLayout);
@@ -575,41 +597,43 @@ public class SesssionAllocation extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lecidLayout.createSequentialGroup()
-                        .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, lecidLayout.createSequentialGroup()
-                                .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel21))
-                                .addGap(18, 18, 18)
-                                .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(lecidLayout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(setLecId, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(selectSubGroup, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(selectLecture, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(timeJText)
-                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(lecidLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel22)
-                                .addGap(18, 18, 18)
-                                .addComponent(selectSession, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(lecidLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(selectGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(lecidLayout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53))
+                                .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, lecidLayout.createSequentialGroup()
+                                        .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel21))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(selectSubGroup, 0, 115, Short.MAX_VALUE)
+                                            .addComponent(selectLecture, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(timeJText))))
+                                .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(lecidLayout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jLabel22)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(selectSession, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(lecidLayout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(selectGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(lecidLayout.createSequentialGroup()
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53))
+                    .addGroup(lecidLayout.createSequentialGroup()
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(noAvbleRoom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(317, 317, 317))))
         );
         lecidLayout.setVerticalGroup(
             lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -621,13 +645,11 @@ public class SesssionAllocation extends javax.swing.JFrame {
                     .addComponent(selectLecture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
                     .addComponent(selectGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
                 .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(setLecId))
+                    .addComponent(jLabel24)
+                    .addComponent(noAvbleRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(lecidLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectSubGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22)
@@ -711,20 +733,46 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
       
         // ADD Button
-        
-        String lectureID  = (String)jTextField1.getText();
-        String groupID = (String)selectGroup.getSelectedItem();
-        String sessionId = (String)selectSession.getSelectedItem();
-        String subGroup = (String)selectSubGroup.getSelectedItem();
-        String time  = (String)timeJText.getText();
-        
-
-      
+       
         
         try{
-              con = (Connection) DBconnection.getConnection();
+             if (selectLecture.getSelectedItem().toString().equals("<-Select->")) {
+                   JOptionPane.showMessageDialog(rootPane, "Select the lecture Name");
+            }else if(selectGroup.getSelectedItem().toString().equals("<-Select->")){
+                   JOptionPane.showMessageDialog(rootPane, "Select the Group");
+            }else if(selectSubGroup.getSelectedItem().toString().equals("<-Select->")){
+                  JOptionPane.showMessageDialog(rootPane, "Select the Sub Group");
+            }else if(selectSession.getSelectedItem().toString().equals("<-Select->")){
+                  JOptionPane.showMessageDialog(rootPane, "Select the Session");
+            }else if(noAvbleRoom.getSelectedItem().toString().equals("<-Select->")){
+                  JOptionPane.showMessageDialog(rootPane, "Select the Room");
+            }else{
+                  String lectureID  = "";
+                  String lectureName = (String)selectLecture.getSelectedItem();
+                  String groupID = (String)selectGroup.getSelectedItem();
+                  String sessionId = (String)selectSession.getSelectedItem();
+                  String subGroup = (String)selectSubGroup.getSelectedItem();
+                  String time  = (String)timeJText.getText();
+                  String room  = (String)noAvbleRoom.getSelectedItem();
+                  String notavlbleroo_id = "";
+                  
+               con = (Connection) DBconnection.getConnection();
               stmt = con.createStatement();
-              String sql = "INSERT INTO management_system.not_available_time(notAvailbleTime_id, lecturer_id, group_id, subGroup_id, session_id, time) VALUES (? ,? ,? ,? ,? ,?)";
+              String sql1 = ("SELECT idlecturer FROM lecturer WHERE name='" + lectureName + "'");
+             ResultSet rs1 = stmt.executeQuery(sql1);
+              if (rs1.first()) {
+                    lectureID = rs1.getString(1);
+                }
+        
+                String sql2 = ("SELECT notAvlRoom_id FROM not_available_rooms WHERE room='" + room + "'");
+             ResultSet rs2 = stmt.executeQuery(sql2);
+              if (rs2.first()) {
+                    notavlbleroo_id = rs2.getString(1);
+                }
+//              con.close();
+//              con = (Connection) DBconnection.getConnection();
+//              stmt = con.createStatement();
+              String sql = "INSERT INTO management_system.not_available_time(notAvailbleTime_id, lecturer_id, group_id, subGroup_id, session_id,notavailableroom_id, time) VALUES (? ,? ,? ,? ,?,? ,?)";
               PreparedStatement preparedStmt = con.prepareStatement(sql);
       
               preparedStmt.setInt(1, 0);
@@ -732,19 +780,18 @@ public class SesssionAllocation extends javax.swing.JFrame {
               preparedStmt.setInt(3,Integer.parseInt(groupID) );
               preparedStmt.setInt(4,Integer.parseInt(subGroup));
               preparedStmt.setInt(5,Integer.parseInt(sessionId));
-              preparedStmt.setString(6, time);
+              preparedStmt.setInt(6,Integer.parseInt(notavlbleroo_id));
+              preparedStmt.setString(7, time);
               preparedStmt.execute();   
               con.close();
               JOptionPane.showMessageDialog(null, "Successfully Inserted");
-              setVisible(false);
-              new WorkingDaysHours().setVisible(true);
-              
-              
+             
+           
+            }  
         }catch(Exception e){
             e.printStackTrace();
                JOptionPane.showMessageDialog(null, "unsuccess");
-              setVisible(false);
-              new WorkingDaysHours().setVisible(true);
+             
               
         }
          
@@ -763,32 +810,13 @@ public class SesssionAllocation extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectLectureItemStateChanged
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-             
-        lecid.setEnabled(false);
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void noAvbleRoomlecturejCbox(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noAvbleRoomlecturejCbox
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noAvbleRoomlecturejCbox
 
-    private void setLecIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setLecIdActionPerformed
-      //lecture id set button
-        try {
-            con = (Connection) DBconnection.getConnection();
-            stmt = con.createStatement();
-              String lectureName = (String)selectLecture.getSelectedItem();
-             String Sql = "SELECT lecturer.idlecturer  FROM management_system.lecturer WHERE lecturer.name = '"+lectureName+"' ";
-        
-            rs = stmt.executeQuery(Sql);
-//            jSelectID.removeAllItems();
-            while (rs.next()) {
-              
- 
-                jTextField1.setText(rs.getString(1));
-            
-          
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_setLecIdActionPerformed
+    private void noAvbleRoomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_noAvbleRoomItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noAvbleRoomItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -866,7 +894,7 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -879,13 +907,12 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel lecid;
+    private javax.swing.JComboBox<String> noAvbleRoom;
     private javax.swing.JComboBox<String> selectGroup;
     private javax.swing.JComboBox<String> selectLecture;
     private javax.swing.JComboBox<String> selectSession;
     private javax.swing.JComboBox<String> selectSubGroup;
-    private javax.swing.JButton setLecId;
     private javax.swing.JTextField timeJText;
     // End of variables declaration//GEN-END:variables
 

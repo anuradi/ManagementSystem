@@ -5,6 +5,7 @@
  */
 package RM;
 
+import Main.MainWindow;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -17,10 +18,20 @@ public class AddSessionRooms extends javax.swing.JFrame {
     /**
      * Creates new form AddSessionRooms
      */
-    public AddSessionRooms() {
+    
+            private MainWindow mainWindow;
+
+  
+    public AddSessionRooms(MainWindow mainWindow) {
         initComponents();
         loadSessions();
         loadRooms();
+        this.mainWindow = mainWindow;
+        
+    }
+    
+    public AddSessionRooms() {
+        
     }
 
     /**
@@ -32,43 +43,48 @@ public class AddSessionRooms extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        asession = new javax.swing.JComboBox<>();
         aroom = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        asession = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddSR.setBackground(new java.awt.Color(255, 255, 255));
+        AddSR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/add_sn.png"))); // NOI18N
+        AddSR.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 390, 330));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Add Session Room");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 40, -1, -1));
+        AddSR.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 250, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Select Session");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 108, -1, -1));
+        AddSR.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 150, 40));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Select Room");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 150, -1, -1));
+        AddSR.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 150, 40));
 
-        getContentPane().add(asession, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 104, 239, -1));
+        aroom.setEditable(true);
+        aroom.setFocusable(false);
+        AddSR.add(aroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 330, 40));
 
-        getContentPane().add(aroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 146, 239, -1));
+        asession.setEditable(true);
+        asession.setFocusable(false);
+        AddSR.add(asession, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 330, 40));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 153));
-        jButton1.setText("Save");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 120, -1));
-
-        jButton2.setBackground(new java.awt.Color(255, 204, 255));
+        jButton2.setBackground(java.awt.Color.red);
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Clear");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -76,22 +92,33 @@ public class AddSessionRooms extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 120, -1));
+        AddSR.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, 190, 40));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+        jButton1.setBackground(new java.awt.Color(0, 204, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Save");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        AddSR.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 190, 40));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("View");
+        jButton3.setBorderPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        AddSR.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 190, 40));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+        getContentPane().add(AddSR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,6 +154,11 @@ public class AddSessionRooms extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ManageSessionRooms ms = new ManageSessionRooms();
+        ms.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,14 +196,16 @@ public class AddSessionRooms extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public final javax.swing.JPanel AddSR = new javax.swing.JPanel();
     private javax.swing.JComboBox<String> aroom;
     private javax.swing.JComboBox<String> asession;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 
     private void loadRooms() {

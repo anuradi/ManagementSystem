@@ -5,6 +5,7 @@
  */
 package RM;
 
+import Main.MainWindow;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +17,17 @@ public class AddRooms extends javax.swing.JFrame {
     /**
      * Creates new form AddRooms
      */
+    
+      private MainWindow mainWindow;
+
+    public AddRooms(MainWindow mainWindow) {
+        initComponents();;
+        this.mainWindow = mainWindow;
+
+    }
+    
     public AddRooms() {
-        initComponents();
+        
     }
 
     /**
@@ -30,52 +40,56 @@ public class AddRooms extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        bname = new javax.swing.JTextField();
-        rname = new javax.swing.JTextField();
+        rcapacity = new javax.swing.JTextField();
         lhall = new javax.swing.JRadioButton();
         lab = new javax.swing.JRadioButton();
-        rcapacity = new javax.swing.JTextField();
+        rname = new javax.swing.JTextField();
+        bname = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Add rooms building wise");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 46, -1, -1));
+        AR.setBackground(new java.awt.Color(255, 255, 255));
+        AR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Building Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 109, -1, -1));
+        AR.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
         jLabel3.setText("Room Name");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 147, 66, -1));
+        AR.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 66, -1));
 
         jLabel4.setText("Room Type");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 186, 66, -1));
+        AR.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 66, -1));
 
         jLabel5.setText("Capacity");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 226, 66, -1));
-        getContentPane().add(bname, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 106, 209, -1));
-        getContentPane().add(rname, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 144, 209, -1));
+        AR.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 66, -1));
+        AR.add(rcapacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 330, 40));
 
+        lhall.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(lhall);
         lhall.setSelected(true);
         lhall.setText("Lecture Hall");
-        getContentPane().add(lhall, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 182, -1, -1));
+        AR.add(lhall, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
 
+        lab.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(lab);
         lab.setText("Laboratory");
-        getContentPane().add(lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 182, -1, -1));
-        getContentPane().add(rcapacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 223, 209, -1));
+        AR.add(lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, -1));
+        AR.add(rname, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 330, 40));
+        AR.add(bname, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 330, 40));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 255));
+        jButton1.setBackground(java.awt.Color.red);
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Clear");
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,9 +97,11 @@ public class AddRooms extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 150, -1));
+        AR.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 350, 190, 40));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 153));
+        jButton2.setBackground(new java.awt.Color(0, 204, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Save");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -93,22 +109,28 @@ public class AddRooms extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 150, -1));
+        AR.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 190, 40));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Add Rooms Building Wise");
+        AR.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 320, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add_B.png"))); // NOI18N
+        AR.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 490, 250));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
+        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("View");
+        jButton3.setBorderPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        AR.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 190, 40));
+
+        getContentPane().add(AR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -143,6 +165,11 @@ public class AddRooms extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ManageRooms mr = new ManageRooms();
+        mr.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,16 +207,18 @@ public class AddRooms extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public final javax.swing.JPanel AR = new javax.swing.JPanel();
     private javax.swing.JTextField bname;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton lab;
     private javax.swing.JRadioButton lhall;
     private javax.swing.JTextField rcapacity;

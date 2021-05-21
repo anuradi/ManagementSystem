@@ -180,7 +180,7 @@ public final class ManageNotAvailableRoom extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        MNAR.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 620, 190, 40));
+        MNAR.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, 190, 40));
 
         jButton3.setBackground(new java.awt.Color(0, 153, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -192,7 +192,7 @@ public final class ManageNotAvailableRoom extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        MNAR.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, 190, 40));
+        MNAR.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 640, 190, 40));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -239,7 +239,7 @@ public final class ManageNotAvailableRoom extends javax.swing.JFrame {
                 jUpdatebtnActionPerformed(evt);
             }
         });
-        MNAR.add(jUpdatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 190, 40));
+        MNAR.add(jUpdatebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 640, 190, 40));
 
         getContentPane().add(MNAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 

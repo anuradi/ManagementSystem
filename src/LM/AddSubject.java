@@ -105,7 +105,7 @@ public class AddSubject extends javax.swing.JFrame {
         AddSub.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 230, 40));
 
         sofferyear.setEditable(true);
-        sofferyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st year", "2nd year", "3rd year", "4th year" }));
+        sofferyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
         sofferyear.setFocusable(false);
         AddSub.add(sofferyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 330, 40));
         AddSub.add(sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 330, 40));

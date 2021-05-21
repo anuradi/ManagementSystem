@@ -18,6 +18,8 @@ import javax.swing.table.TableModel;
 public class ManageSubject extends javax.swing.JFrame {
 
     String subjectid = "";
+    private int xAxisMousePoint;
+    private int yAxisMousePoint;
 
     /**
      * Creates new form ManageSubject
@@ -25,6 +27,14 @@ public class ManageSubject extends javax.swing.JFrame {
     public ManageSubject() {
         initComponents();
         loadTableData();
+    }
+    
+        protected void setMouseClickedLocation(int x, int y) {
+        this.xAxisMousePoint = x;
+        this.yAxisMousePoint = y;
+    }
+     protected void setWindowLocation(int x, int y) {
+        this.setLocation(x - xAxisMousePoint, y - yAxisMousePoint);
     }
 
     /**
@@ -36,7 +46,6 @@ public class ManageSubject extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
@@ -59,13 +68,14 @@ public class ManageSubject extends javax.swing.JFrame {
         update = new javax.swing.JButton();
         stutorialh = new javax.swing.JSpinner();
         slech = new javax.swing.JSpinner();
+        windowTopBar = new javax.swing.JPanel();
+        btn_Exit1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Manage Subjects");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 35, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,12 +97,14 @@ public class ManageSubject extends javax.swing.JFrame {
         jLabel4.setText("Subject Name");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 344, -1, -1));
 
+        ssecondsem.setBackground(new java.awt.Color(255, 255, 255));
         ssecondsem.setText("Second");
         getContentPane().add(ssecondsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 300, -1, -1));
 
         jLabel3.setText("Offered Semester");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 304, -1, -1));
 
+        sfirstsem.setBackground(new java.awt.Color(255, 255, 255));
         sfirstsem.setSelected(true);
         sfirstsem.setText("First");
         getContentPane().add(sfirstsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 300, -1, -1));
@@ -102,7 +114,9 @@ public class ManageSubject extends javax.swing.JFrame {
         getContentPane().add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 379, 139, -1));
         getContentPane().add(sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 341, 139, -1));
 
+        sofferyear.setEditable(true);
         sofferyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        sofferyear.setFocusable(false);
         getContentPane().add(sofferyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 262, 139, -1));
         getContentPane().add(sevoh, new org.netbeans.lib.awtextra.AbsoluteConstraints(519, 379, 50, -1));
 
@@ -122,10 +136,13 @@ public class ManageSubject extends javax.swing.JFrame {
         jLabel5.setText("Subject Code");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 382, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        delete.setBackground(new java.awt.Color(255, 204, 102));
+        delete.setBackground(java.awt.Color.red);
+        delete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setText("Delete");
         delete.setBorderPainted(false);
         delete.addActionListener(new java.awt.event.ActionListener() {
@@ -133,9 +150,11 @@ public class ManageSubject extends javax.swing.JFrame {
                 deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 110, -1));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 110, -1));
 
-        update.setBackground(new java.awt.Color(153, 204, 255));
+        update.setBackground(new java.awt.Color(0, 153, 255));
+        update.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        update.setForeground(new java.awt.Color(255, 255, 255));
         update.setText("Update");
         update.setBorderPainted(false);
         update.addActionListener(new java.awt.event.ActionListener() {
@@ -143,13 +162,47 @@ public class ManageSubject extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 110, -1));
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 110, -1));
         jPanel1.add(stutorialh, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 50, -1));
         jPanel1.add(slech, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 50, -1));
+
+        windowTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        windowTopBar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+        windowTopBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                windowTopBarMouseDragged(evt);
+            }
+        });
+        windowTopBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                windowTopBarMousePressed(evt);
+            }
+        });
+        windowTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_Exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit1.setBorder(null);
+        btn_Exit1.setBorderPainted(false);
+        btn_Exit1.setContentAreaFilled(false);
+        btn_Exit1.setFocusPainted(false);
+        btn_Exit1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Exit1ActionPerformed(evt);
+            }
+        });
+        windowTopBar.add(btn_Exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 0, 34, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Manage Subjects");
+        windowTopBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, -1, 20));
+
+        jPanel1.add(windowTopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
@@ -206,6 +259,19 @@ public class ManageSubject extends javax.swing.JFrame {
         deleteSubject();
     }//GEN-LAST:event_deleteActionPerformed
 
+    private void btn_Exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Exit1ActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_btn_Exit1ActionPerformed
+
+    private void windowTopBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMouseDragged
+        this.setWindowLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_windowTopBarMouseDragged
+
+    private void windowTopBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMousePressed
+        this.setMouseClickedLocation(evt.getX(), evt.getY());
+    }//GEN-LAST:event_windowTopBarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -242,6 +308,7 @@ public class ManageSubject extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Exit1;
     private javax.swing.JButton delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -265,6 +332,7 @@ public class ManageSubject extends javax.swing.JFrame {
     private javax.swing.JRadioButton ssecondsem;
     private javax.swing.JSpinner stutorialh;
     private javax.swing.JButton update;
+    private javax.swing.JPanel windowTopBar;
     // End of variables declaration//GEN-END:variables
 
     private void clearFields() {

@@ -5,7 +5,14 @@
  */
 package SM;
 
+import HM.ManageNotAvailableTimes;
+import HM.WorkingDaysHours;
+import Main.MainWindow;
+import com.mysql.jdbc.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
@@ -13,18 +20,44 @@ import javax.swing.JOptionPane;
  *
  * @author Thilona
  */
-public class SesssionAllocation extends javax.swing.JFrame {
+public final class SesssionAllocation extends javax.swing.JFrame {
+        private MainWindow mainWindow;
 
-    /**
-     * Creates new form SesssionAllocation
-     */
-    public SesssionAllocation() {
+  
+    public SesssionAllocation(MainWindow mainWindow) {
         initComponents();
         loadLecturer();
         loadSubjects();
         loadGroupID();
         loadTags();
+        lectureName();
+        group();
+        subGroup();
+        notavailableroom();
+        selectSession();
+       // jTextField1.setEditable(false);
+        this.mainWindow = mainWindow;
+        
     }
+
+   
+
+    /**
+     * Creates new form SesssionAllocation
+     */
+//      public SesssionAllocation() {
+//        initComponents();
+//        loadLecturer();
+//        loadSubjects();
+//        loadGroupID();
+//        loadTags();
+//        lectureName();
+//        group();
+//        subGroup();
+//        notavailableroom();
+//        selectSession();
+//        jTextField1.setEditable(false);
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +69,7 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
+        jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         subject = new javax.swing.JComboBox<>();
@@ -77,59 +111,102 @@ public class SesssionAllocation extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        selectLecture = new javax.swing.JComboBox<>();
+        selectGroup = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        selectSubGroup = new javax.swing.JComboBox<>();
+        selectSession = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        timeJText = new javax.swing.JTextField();
+        jButton8 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        room = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        SA.setBackground(new java.awt.Color(255, 255, 255));
+        SA.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Sessions And Not Available Time Allocations");
+        SA.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 540, -1));
+
+        jTabbedPane1.setBackground(new java.awt.Color(51, 204, 255));
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        subject.setEditable(true);
+        subject.setFocusable(false);
         subject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjectActionPerformed(evt);
             }
         });
-        jPanel1.add(subject, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 91, 175, -1));
+        jPanel1.add(subject, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 330, 40));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Lecture 1");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 91, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Lecture 2");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 121, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Subject Code");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 153, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Subject");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 99, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Group ID");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 129, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Tag");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 159, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
 
-        jPanel1.add(lecturer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 121, 170, -1));
+        lecturer2.setEditable(true);
+        lecturer2.setFocusable(false);
+        jPanel1.add(lecturer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 330, 40));
 
+        lecturer1.setEditable(true);
+        lecturer1.setBorder(null);
+        lecturer1.setFocusable(false);
         lecturer1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lecturer1ActionPerformed(evt);
             }
         });
-        jPanel1.add(lecturer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 90, 170, -1));
+        jPanel1.add(lecturer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 330, 40));
 
+        groupid.setEditable(true);
+        groupid.setFocusable(false);
         groupid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 groupidActionPerformed(evt);
             }
         });
-        jPanel1.add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 123, 174, -1));
+        jPanel1.add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 330, 40));
 
-        jPanel1.add(tags, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 156, 174, -1));
+        tags.setEditable(true);
+        tags.setFocusable(false);
+        jPanel1.add(tags, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 330, 40));
 
         addsession.setBackground(new java.awt.Color(0, 153, 255));
+        addsession.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        addsession.setForeground(new java.awt.Color(255, 255, 255));
         addsession.setText("Add Sessions");
         addsession.setBorderPainted(false);
         addsession.addActionListener(new java.awt.event.ActionListener() {
@@ -137,9 +214,11 @@ public class SesssionAllocation extends javax.swing.JFrame {
                 addsessionActionPerformed(evt);
             }
         });
-        jPanel1.add(addsession, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 110, -1));
+        jPanel1.add(addsession, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 190, 40));
 
-        jButton2.setBackground(new java.awt.Color(204, 255, 204));
+        jButton2.setBackground(new java.awt.Color(0, 204, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("View");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -147,26 +226,48 @@ public class SesssionAllocation extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 110, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 190, 40));
 
         subjectcode.setEditable(false);
-        jPanel1.add(subjectcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 157, 170, -1));
+        jPanel1.add(subjectcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 330, 40));
 
         jTabbedPane1.addTab("Consecutive", jPanel1);
 
         jpdu.setBackground(new java.awt.Color(255, 255, 255));
+        jpdu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jpdu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        subject1_parallel.setEditable(true);
+        subject1_parallel.setFocusable(false);
+        jpdu.add(subject1_parallel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, 330, 40));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Start time");
+        jpdu.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Day");
+        jpdu.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Duration");
+        jpdu.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel11.setText("Subject 1");
+        jpdu.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, -1, -1));
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Subject 2");
+        jpdu.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, -1, -1));
+
+        subject2_parallel.setEditable(true);
+        subject2_parallel.setFocusable(false);
+        jpdu.add(subject2_parallel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 330, 40));
 
         jButton3.setBackground(new java.awt.Color(0, 153, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Add Sessions");
         jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -174,8 +275,11 @@ public class SesssionAllocation extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jpdu.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 190, 40));
 
-        jButton4.setBackground(new java.awt.Color(204, 255, 204));
+        jButton4.setBackground(new java.awt.Color(0, 204, 255));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("View");
         jButton4.setBorderPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -183,90 +287,52 @@ public class SesssionAllocation extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jpduLayout = new javax.swing.GroupLayout(jpdu);
-        jpdu.setLayout(jpduLayout);
-        jpduLayout.setHorizontalGroup(
-            jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpduLayout.createSequentialGroup()
-                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpduLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(duration)
-                            .addComponent(start_time)
-                            .addComponent(day, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
-                    .addGroup(jpduLayout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jButton3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(subject2_parallel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(subject1_parallel, 0, 170, Short.MAX_VALUE))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
-            .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jpduLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel10))
-                    .addGap(218, 218, 218)
-                    .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel11)
-                        .addComponent(jLabel12))
-                    .addContainerGap(230, Short.MAX_VALUE)))
-        );
-        jpduLayout.setVerticalGroup(
-            jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpduLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subject1_parallel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(start_time, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subject2_parallel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
-                .addGap(38, 38, 38))
-            .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jpduLayout.createSequentialGroup()
-                    .addGap(91, 91, 91)
-                    .addGroup(jpduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jpduLayout.createSequentialGroup()
-                            .addComponent(jLabel11)
-                            .addGap(16, 16, 16)
-                            .addComponent(jLabel12))
-                        .addGroup(jpduLayout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addGap(16, 16, 16)
-                            .addComponent(jLabel9)
-                            .addGap(16, 16, 16)
-                            .addComponent(jLabel10)))
-                    .addContainerGap(98, Short.MAX_VALUE)))
-        );
+        jpdu.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 190, 40));
+        jpdu.add(duration, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 330, 40));
+        jpdu.add(start_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 330, 40));
+        jpdu.add(day, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 330, 40));
 
         jTabbedPane1.addTab("Parallel", jpdu);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        subject3_nonover.setEditable(true);
+        subject3_nonover.setFocusable(false);
+        jPanel3.add(subject3_nonover, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 330, 40));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setText("Subject 1");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel15.setText("Subject 2");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
 
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel16.setText("Subject 3");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel17.setText("Subject 4");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
+
+        subject1_nonover.setEditable(true);
+        subject1_nonover.setFocusable(false);
+        jPanel3.add(subject1_nonover, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 330, 40));
+
+        subject2_nonover.setEditable(true);
+        subject2_nonover.setFocusable(false);
+        jPanel3.add(subject2_nonover, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 330, 40));
+
+        subject4_nonover.setEditable(true);
+        subject4_nonover.setFocusable(false);
+        jPanel3.add(subject4_nonover, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 330, 40));
 
         jButton5.setBackground(new java.awt.Color(0, 153, 255));
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Add Sessions");
         jButton5.setBorderPainted(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -274,8 +340,11 @@ public class SesssionAllocation extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 190, 40));
 
-        jButton6.setBackground(new java.awt.Color(204, 255, 204));
+        jButton6.setBackground(new java.awt.Color(0, 204, 255));
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("View");
         jButton6.setBorderPainted(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -283,98 +352,133 @@ public class SesssionAllocation extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel15))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(subject1_nonover, 0, 148, Short.MAX_VALUE)
-                    .addComponent(subject2_nonover, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(43, 43, 43)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(subject3_nonover, 0, 170, Short.MAX_VALUE)
-                        .addComponent(subject4_nonover, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(subject1_nonover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel16)
-                        .addComponent(subject3_nonover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel17)
-                                .addComponent(subject4_nonover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(subject2_nonover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(61, 61, 61)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addContainerGap(77, Short.MAX_VALUE))
-        );
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 190, 40));
 
         jTabbedPane1.addTab("Non Overlapping", jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
-        );
+        jLabel18.setText("Lectures /Group & Sub Group");
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 172, 19));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setText("Select Lecturer");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 41, 110, -1));
+
+        selectLecture.setEditable(true);
+        selectLecture.setFocusable(false);
+        selectLecture.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectLectureItemStateChanged(evt);
+            }
+        });
+        selectLecture.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectLecturelecturejCbox(evt);
+            }
+        });
+        jPanel4.add(selectLecture, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 440, 40));
+
+        selectGroup.setEditable(true);
+        selectGroup.setFocusable(false);
+        selectGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectGroupgroupjCbox(evt);
+            }
+        });
+        jPanel4.add(selectGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 140, 40));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setText("Select  Group");
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 110, -1));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel21.setText("Select Sub Group");
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 40));
+
+        selectSubGroup.setEditable(true);
+        selectSubGroup.setFocusable(false);
+        selectSubGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectSubGroupsubGroupjCbox(evt);
+            }
+        });
+        jPanel4.add(selectSubGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 450, 40));
+
+        selectSession.setEditable(true);
+        selectSession.setFocusable(false);
+        selectSession.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectSessionsessionidjCbox(evt);
+            }
+        });
+        jPanel4.add(selectSession, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 160, 140, 40));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setText("Select  Session ID");
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel20.setText("Time");
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 46, -1));
+        jPanel4.add(timeJText, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 450, 40));
+
+        jButton8.setBackground(new java.awt.Color(0, 153, 255));
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("ADD");
+        jButton8.setBorderPainted(false);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 190, 40));
+
+        jButton7.setBackground(new java.awt.Color(0, 204, 255));
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("View");
+        jButton7.setBorderPainted(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, 190, 40));
+
+        jButton9.setBackground(java.awt.Color.red);
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Clear");
+        jButton9.setBorderPainted(false);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, 190, 40));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel24.setText("Select Not available room ");
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, -1, -1));
+
+        room.setEditable(true);
+        room.setFocusable(false);
+        room.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomActionPerformed(evt);
+            }
+        });
+        jPanel4.add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, 140, 40));
 
         jTabbedPane1.addTab(" Not Available Times", jPanel4);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 83, -1, 291));
+        SA.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 83, 940, 550));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Sessions And Not Available Time Allocations");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 21, -1, -1));
-
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
+        getContentPane().add(SA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -528,9 +632,9 @@ public class SesssionAllocation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      UDConsecutive ud = new UDConsecutive();
-      ud.setVisible(true);
-      
+        UDConsecutive ud = new UDConsecutive();
+        ud.setVisible(true);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -547,42 +651,125 @@ public class SesssionAllocation extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lecturer1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SesssionAllocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SesssionAllocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SesssionAllocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SesssionAllocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void selectLectureItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectLectureItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectLectureItemStateChanged
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SesssionAllocation().setVisible(true);
+    private void selectLecturelecturejCbox(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectLecturelecturejCbox
+
+    }//GEN-LAST:event_selectLecturelecturejCbox
+
+    private void selectGroupgroupjCbox(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectGroupgroupjCbox
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectGroupgroupjCbox
+
+    private void selectSubGroupsubGroupjCbox(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSubGroupsubGroupjCbox
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectSubGroupsubGroupjCbox
+
+    private void selectSessionsessionidjCbox(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSessionsessionidjCbox
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectSessionsessionidjCbox
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+      try {
+            if (selectLecture.getSelectedItem().toString().equals("<-Select->")) {
+                   JOptionPane.showMessageDialog(rootPane, "Select the lecture Name");
+            }else if(selectGroup.getSelectedItem().toString().equals("<-Select->")){
+                   JOptionPane.showMessageDialog(rootPane, "Select the Group");
+            }else if(selectSubGroup.getSelectedItem().toString().equals("<-Select->")){
+                  JOptionPane.showMessageDialog(rootPane, "Select the Sub Group");
+            }else if(selectSession.getSelectedItem().toString().equals("<-Select->")){
+                  JOptionPane.showMessageDialog(rootPane, "Select the Session");
+            }else if(room.getSelectedItem().toString().equals("<-Select->")){
+                  JOptionPane.showMessageDialog(rootPane, "Select the Room");
+            }else{
+                  String lectureID  = "";
+                  String lectureName = (String)selectLecture.getSelectedItem();
+                  String groupID = (String)selectGroup.getSelectedItem();
+                  String sessionId = (String)selectSession.getSelectedItem();
+                  String subGroup = (String)selectSubGroup.getSelectedItem();
+                  String time  = (String)timeJText.getText();
+                  String room  = (String)this.room.getSelectedItem();
+                  String notavlbleroom_id = "";
+                  ResultSet rs1 = DB.DB.search("SELECT idlecturer FROM lecturer WHERE name='" + lectureName + "'");
+                   if (rs1.first()) {
+                    lectureID = rs1.getString(1);
+                }
+                    ResultSet rs2 = DB.DB.search("SELECT notAvlRoom_id FROM not_available_rooms WHERE room='" + room + "'");
+                     if (rs2.first()) {
+                    notavlbleroom_id= rs2.getString(1);
+                }
+                    DB.DB.iud("INSERT INTO management_system.not_available_time(notAvailbleTime_id, lecturer_id, group_id, subGroup_id, session_id, time,notAvlRoom_id) VALUES ('"+0+"' ,'"+ lectureID+"' ,'"+groupID +"' ,'"+subGroup +"' ,'"+ sessionId+"','"+time +"','"+notavlbleroom_id +"')");
+            
+                JOptionPane.showMessageDialog(null, "Successfully Inserted");
+                setVisible(false);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "unsuccess");
+                setVisible(false);
+
+
             }
-        });
-    }
+
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        //View Button
+        ManageNotAvailableTimes manageNotAvailableTimes = new ManageNotAvailableTimes();
+        manageNotAvailableTimes.setVisible(true);
+        dispose();
+
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        clearfields();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void roomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roomActionPerformed
+
+//    /**
+   //  * @param args the command line arguments
+  //   */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SesssionAllocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SesssionAllocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SesssionAllocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SesssionAllocation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new SesssionAllocation().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public final javax.swing.JPanel SA = new javax.swing.JPanel();
     private javax.swing.JButton addsession;
     private javax.swing.JTextField day;
     private javax.swing.JTextField duration;
@@ -592,15 +779,25 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -609,7 +806,6 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -617,6 +813,11 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private javax.swing.JPanel jpdu;
     private javax.swing.JComboBox<String> lecturer1;
     private javax.swing.JComboBox<String> lecturer2;
+    private javax.swing.JComboBox<String> room;
+    private javax.swing.JComboBox<String> selectGroup;
+    private javax.swing.JComboBox<String> selectLecture;
+    private javax.swing.JComboBox<String> selectSession;
+    private javax.swing.JComboBox<String> selectSubGroup;
     private javax.swing.JTextField start_time;
     private javax.swing.JComboBox<String> subject;
     private javax.swing.JComboBox<String> subject1_nonover;
@@ -627,6 +828,7 @@ public class SesssionAllocation extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> subject4_nonover;
     private javax.swing.JTextField subjectcode;
     private javax.swing.JComboBox<String> tags;
+    private javax.swing.JTextField timeJText;
     // End of variables declaration//GEN-END:variables
 
     private void loadLecturer() {
@@ -703,6 +905,89 @@ public class SesssionAllocation extends javax.swing.JFrame {
         subject2_nonover.setSelectedItem("<-Select->");
         subject3_nonover.setSelectedItem("<-Select->");
         subject4_nonover.setSelectedItem("<-Select->");
+        room.setSelectedItem("<-Select->");
+        selectGroup.setSelectedItem("<-Select->");
+         selectLecture.setSelectedItem("<-Select->");
+          selectSession.setSelectedItem("<-Select->");
+           selectSubGroup.setSelectedItem("<-Select->");
+            timeJText.setText("");
+
+    }
+    private void notavailableroom() {
+     try {
+            room.setSelectedItem("<-Select->");
+            ResultSet rs = DB.DB.search("SELECT not_available_rooms.room FROM not_available_rooms");
+          
+      
+            while (rs.next()) {
+                room.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); //sessionId
+        }
+    }
+    
+    public void lectureName() {
+      
+            try {
+                ResultSet rs = DB.DB.search("SELECT lecturer.name   FROM management_system.lecturer");
+                
+                selectLecture.setSelectedItem("<-Select->");
+                while (rs.next()) {
+                    
+                    selectLecture.addItem(rs.getString(1));
+                    
+                }
+            } catch (Exception e) {
+             e.printStackTrace();
+            }
+
+    }
+
+    public void group() {
+        try {
+                selectGroup.setSelectedItem("<-Select->");
+                ResultSet rs = DB.DB.search("SELECT student_groups.groupno FROM student_groups");
+                
+                while (rs.next()) {
+                    
+                    selectGroup.addItem(rs.getString(1));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+    }
+
+    public void subGroup() {
+      
+              try {
+        
+          selectSubGroup.setSelectedItem("<-Select->");
+          ResultSet  rs = DB.DB.search("SELECT student_groups.subgroupno FROM student_groups");
+           
+
+            while (rs.next()) {
+
+                selectSubGroup.addItem(rs.getString(1));
+            }
+      } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+    }
+
+    public void selectSession() {
+      try {
+                ResultSet rs = DB.DB.search("SELECT session_rooms.idsession_rooms FROM session_rooms");
+                selectSession.setSelectedItem("<-Select->");
+                while (rs.next()) {
+                    
+                    selectSession.addItem(rs.getString(1));
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
 
     }
 }

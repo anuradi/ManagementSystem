@@ -17,6 +17,8 @@ import javax.swing.table.DefaultTableModel;
 public class UDConsecutive extends javax.swing.JFrame {
 
     String consecutiveid = "";
+    private int xAxisMousePoint;
+    private int yAxisMousePoint;
 
     /**
      * Creates new form UDConsecutive
@@ -29,6 +31,13 @@ public class UDConsecutive extends javax.swing.JFrame {
         loadGroupID();
         loadTags();
     }
+    protected void setMouseClickedLocation(int x, int y) {
+        this.xAxisMousePoint = x;
+        this.yAxisMousePoint = y;
+    }
+     protected void setWindowLocation(int x, int y) {
+        this.setLocation(x - xAxisMousePoint, y - yAxisMousePoint);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,34 +48,105 @@ public class UDConsecutive extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        windowTopBar = new javax.swing.JPanel();
+        btn_Exit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        csubjectcode = new javax.swing.JTextField();
+        clecturer2 = new javax.swing.JComboBox<>();
+        clecturer1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        clecturer1 = new javax.swing.JComboBox<>();
-        clecturer2 = new javax.swing.JComboBox<>();
-        csubjectcode = new javax.swing.JTextField();
-        csubject = new javax.swing.JComboBox<>();
-        cgroupid = new javax.swing.JComboBox<>();
         ctag = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        btn_Exit = new javax.swing.JButton();
+        cgroupid = new javax.swing.JComboBox<>();
+        csubject = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        windowTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        windowTopBar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+        windowTopBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                windowTopBarMouseDragged(evt);
+            }
+        });
+        windowTopBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                windowTopBarMousePressed(evt);
+            }
+        });
+        windowTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit.setBorder(null);
+        btn_Exit.setBorderPainted(false);
+        btn_Exit.setContentAreaFilled(false);
+        btn_Exit.setFocusPainted(false);
+        btn_Exit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExitActionPerformed(evt);
+            }
+        });
+        windowTopBar.add(btn_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 0, 34, 30));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Update And Delete Consecutive Sessions");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 55, -1, -1));
+        windowTopBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, -1, 20));
+
+        getContentPane().add(windowTopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(java.awt.Color.red);
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Clear");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 501, 130, -1));
+
+        jButton2.setBackground(new java.awt.Color(0, 153, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Update");
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 501, 140, -1));
+
+        jButton3.setBackground(java.awt.Color.red);
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Delete");
+        jButton3.setBorderPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(437, 501, 130, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,112 +163,53 @@ public class UDConsecutive extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 572, 152));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 572, 200));
 
         jLabel2.setText("Lecturer1");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 287, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         jLabel3.setText("Lecturer2");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 327, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
         jLabel4.setText("Subject Code");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 367, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+        jPanel1.add(csubjectcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 160, -1));
+
+        clecturer2.setEditable(true);
+        clecturer2.setFocusable(false);
+        jPanel1.add(clecturer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 160, -1));
+
+        clecturer1.setEditable(true);
+        clecturer1.setFocusable(false);
+        jPanel1.add(clecturer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 160, -1));
 
         jLabel5.setText("Subject Name");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 287, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
 
         jLabel6.setText("Group ID");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 327, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, -1, -1));
 
         jLabel7.setText("Tag");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 367, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, -1, -1));
 
-        getContentPane().add(clecturer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 283, 160, -1));
+        ctag.setEditable(true);
+        ctag.setFocusable(false);
+        jPanel1.add(ctag, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 193, -1));
 
-        getContentPane().add(clecturer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 323, 160, -1));
-        getContentPane().add(csubjectcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 364, 160, -1));
+        cgroupid.setEditable(true);
+        cgroupid.setFocusable(false);
+        jPanel1.add(cgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 193, -1));
 
+        csubject.setEditable(true);
+        csubject.setFocusable(false);
         csubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 csubjectActionPerformed(evt);
             }
         });
-        getContentPane().add(csubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 283, 193, -1));
+        jPanel1.add(csubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 193, -1));
 
-        getContentPane().add(cgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 323, 193, -1));
-
-        getContentPane().add(ctag, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 363, 193, -1));
-
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-
-        jButton1.setBackground(new java.awt.Color(255, 204, 255));
-        jButton1.setText("Clear");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(153, 204, 255));
-        jButton2.setText("Update");
-        jButton2.setBorderPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setBackground(new java.awt.Color(255, 204, 102));
-        jButton3.setText("Delete");
-        jButton3.setBorderPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        btn_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
-        btn_Exit.setBorder(null);
-        btn_Exit.setBorderPainted(false);
-        btn_Exit.setContentAreaFilled(false);
-        btn_Exit.setFocusPainted(false);
-        btn_Exit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
-        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ExitActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(btn_Exit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
-                .addGap(86, 86, 86))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 610));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
         jPanel1.getAccessibleContext().setAccessibleName("");
 
         pack();
@@ -242,7 +263,7 @@ public class UDConsecutive extends javax.swing.JFrame {
                     if (rs4.first()) {
                         tagsid = rs4.getString(1);
                     }
-                    DB.DB.iud("update consecutive set subject='" + subjectid + "', group_id='" + groupid + "', lecturer1='" + lec1id + "', lecturer2='" + lec2id + "', tags_id='" + tagsid + "' where idconsecutive='" + consecutiveid + "'");
+                    DB.DB.iud("update consecutive set subject='" + subjectid + "', group_id='" + groupid + "', lecturer1='" + lec1id + "', lecturer2='" + lec2id + "', tag='" + tagsid + "' where idconsecutive='" + consecutiveid + "'");
                     JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
                     loadTableData();
                     clearFields();
@@ -287,6 +308,14 @@ public class UDConsecutive extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_btn_ExitActionPerformed
+
+    private void windowTopBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMouseDragged
+        this.setWindowLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_windowTopBarMouseDragged
+
+    private void windowTopBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMousePressed
+        this.setMouseClickedLocation(evt.getX(), evt.getY());
+    }//GEN-LAST:event_windowTopBarMousePressed
 
     /**
      * @param args the command line arguments
@@ -344,6 +373,7 @@ public class UDConsecutive extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JPanel windowTopBar;
     // End of variables declaration//GEN-END:variables
 
     private void loadTableData() {

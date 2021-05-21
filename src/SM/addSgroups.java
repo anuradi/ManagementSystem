@@ -5,6 +5,7 @@
  */
 package SM;
 
+import Main.MainWindow;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -13,13 +14,16 @@ import javax.swing.JOptionPane;
  *
  * @author Thilona
  */
-public class addSgroups extends javax.swing.JFrame {
 
-    /**
-     * Creates new form addSgroups
-     */
-    public addSgroups() {
+
+public class addSgroups extends javax.swing.JFrame {
+    private MainWindow mainWindow;
+
+  
+    public addSgroups(MainWindow mainWindow) {
         initComponents();
+        this.mainWindow = mainWindow;
+        
     }
 
     /**
@@ -37,7 +41,6 @@ public class addSgroups extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         generateid = new javax.swing.JButton();
         clear = new javax.swing.JButton();
@@ -48,35 +51,46 @@ public class addSgroups extends javax.swing.JFrame {
         subgroupno = new javax.swing.JComboBox<>();
         groupid = new javax.swing.JTextField();
         subgroupid = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Add_Sgroup.setBackground(new java.awt.Color(255, 255, 255));
+        Add_Sgroup.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Academic Year Semester");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        Add_Sgroup.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 200, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Programme");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        Add_Sgroup.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 180, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Group No");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        Add_Sgroup.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 170, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Sub Group No");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        Add_Sgroup.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 200, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Group ID");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        Add_Sgroup.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 160, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Sub Group ID");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        Add_Sgroup.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 200, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Add Student Groups");
+        Add_Sgroup.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 250, -1));
 
-        generateid.setBackground(new java.awt.Color(0, 204, 204));
+        generateid.setBackground(new java.awt.Color(0, 153, 255));
+        generateid.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        generateid.setForeground(new java.awt.Color(255, 255, 255));
         generateid.setText("Generate IDs");
         generateid.setBorderPainted(false);
         generateid.addActionListener(new java.awt.event.ActionListener() {
@@ -84,8 +98,11 @@ public class addSgroups extends javax.swing.JFrame {
                 generateidActionPerformed(evt);
             }
         });
+        Add_Sgroup.add(generateid, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 190, 40));
 
-        clear.setBackground(new java.awt.Color(255, 204, 255));
+        clear.setBackground(java.awt.Color.red);
+        clear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        clear.setForeground(new java.awt.Color(255, 255, 255));
         clear.setText("Clear");
         clear.setBorderPainted(false);
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -93,8 +110,11 @@ public class addSgroups extends javax.swing.JFrame {
                 clearActionPerformed(evt);
             }
         });
+        Add_Sgroup.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 620, 190, 40));
 
-        save.setBackground(new java.awt.Color(255, 255, 153));
+        save.setBackground(new java.awt.Color(0, 204, 255));
+        save.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        save.setForeground(new java.awt.Color(255, 255, 255));
         save.setText("Save");
         save.setBorderPainted(false);
         save.addActionListener(new java.awt.event.ActionListener() {
@@ -102,81 +122,54 @@ public class addSgroups extends javax.swing.JFrame {
                 saveActionPerformed(evt);
             }
         });
+        Add_Sgroup.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 190, 40));
+        Add_Sgroup.add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 330, 40));
 
+        programme.setEditable(true);
         programme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "IT", "CS" }));
+        programme.setFocusable(false);
+        programme.setOpaque(false);
         programme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 programmeActionPerformed(evt);
             }
         });
+        Add_Sgroup.add(programme, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 330, 40));
 
+        groupno.setEditable(true);
         groupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        groupno.setFocusable(false);
+        Add_Sgroup.add(groupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 330, 40));
 
+        subgroupno.setEditable(true);
         subgroupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select->", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        subgroupno.setFocusable(false);
         subgroupno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subgroupnoActionPerformed(evt);
             }
         });
+        Add_Sgroup.add(subgroupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 330, 40));
 
         groupid.setEditable(false);
+        Add_Sgroup.add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 330, 40));
 
         subgroupid.setEditable(false);
+        Add_Sgroup.add(subgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 330, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(generateid, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(programme, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(groupno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(subgroupno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(groupid, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(subgroupid, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(209, 209, 209))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addGap(52, 52, 52)
-                .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(programme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(groupno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(subgroupno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(groupid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(subgroupid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(generateid)
-                    .addComponent(clear)
-                    .addComponent(save))
-                .addGap(50, 50, 50))
-        );
+        jButton2.setBackground(new java.awt.Color(0, 204, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("View");
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        Add_Sgroup.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 620, 190, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 400));
+        getContentPane().add(Add_Sgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 
         pack();
         setLocationRelativeTo(null);
@@ -245,46 +238,53 @@ public class addSgroups extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addSgroups.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addSgroups.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addSgroups.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addSgroups.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ManageSGroups mg = new ManageSGroups();
+        mg.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new addSgroups().setVisible(true);
-            }
-        });
-    }
+
+    // * @param args the command line arguments
+   //  */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Windows".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(addSgroups.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(addSgroups.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(addSgroups.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(addSgroups.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//              //  new addSgroups().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public final javax.swing.JPanel Add_Sgroup = new javax.swing.JPanel();
     private javax.swing.JButton clear;
     private javax.swing.JButton generateid;
     private javax.swing.JTextField groupid;
     private javax.swing.JComboBox<String> groupno;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -292,7 +292,6 @@ public class addSgroups extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> programme;
     private javax.swing.JButton save;
     private javax.swing.JTextField semester;

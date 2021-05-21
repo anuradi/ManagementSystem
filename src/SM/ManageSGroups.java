@@ -18,6 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageSGroups extends javax.swing.JFrame {
 
+    private int xAxisMousePoint;
+    private int yAxisMousePoint;
+
     /**
      * Creates new form ManageSGroups
      */
@@ -25,7 +28,13 @@ public class ManageSGroups extends javax.swing.JFrame {
         initComponents();
         loadData();
     }
-
+     protected void setMouseClickedLocation(int x, int y) {
+        this.xAxisMousePoint = x;
+        this.yAxisMousePoint = y;
+    }
+     protected void setWindowLocation(int x, int y) {
+        this.setLocation(x - xAxisMousePoint, y - yAxisMousePoint);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,32 +44,32 @@ public class ManageSGroups extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        semester = new javax.swing.JTextField();
-        program = new javax.swing.JComboBox<>();
-        groupno = new javax.swing.JComboBox<>();
-        subgroupno = new javax.swing.JComboBox<>();
-        groupid = new javax.swing.JTextField();
-        subgroupid = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         clear = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         update = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        groupno = new javax.swing.JComboBox<>();
+        program = new javax.swing.JComboBox<>();
+        semester = new javax.swing.JTextField();
+        subgroupno = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        subgroupid = new javax.swing.JTextField();
+        groupid = new javax.swing.JTextField();
+        windowTopBar = new javax.swing.JPanel();
+        btn_Exit1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Manage Student Groups");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 30, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,42 +86,15 @@ public class ManageSGroups extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 65, 590, 167));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 65, 590, 220));
 
-        jLabel2.setText("Academic Year Semester");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
-
-        jLabel3.setText("Programme");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
-
-        jLabel4.setText("Group No");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-
-        jLabel5.setText("Sub Group No");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 266, -1, -1));
-
-        jLabel6.setText("Group ID");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 296, -1, -1));
-
-        jLabel7.setText("Sub Group ID");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 326, -1, -1));
-        getContentPane().add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 260, 170, -1));
-
-        program.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "CS" }));
-        getContentPane().add(program, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 290, 170, -1));
-
-        groupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-        getContentPane().add(groupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 320, 170, -1));
-
-        subgroupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-        getContentPane().add(subgroupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 170, -1));
-        getContentPane().add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 170, -1));
-        getContentPane().add(subgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, -1));
-
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        clear.setBackground(new java.awt.Color(255, 204, 255));
+        clear.setBackground(java.awt.Color.red);
+        clear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        clear.setForeground(new java.awt.Color(255, 255, 255));
         clear.setText("Clear");
         clear.setBorderPainted(false);
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -120,9 +102,11 @@ public class ManageSGroups extends javax.swing.JFrame {
                 clearActionPerformed(evt);
             }
         });
-        jPanel1.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 110, -1));
+        jPanel1.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 110, -1));
 
-        delete.setBackground(new java.awt.Color(255, 204, 102));
+        delete.setBackground(java.awt.Color.red);
+        delete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setText("Delete");
         delete.setBorderPainted(false);
         delete.addActionListener(new java.awt.event.ActionListener() {
@@ -130,9 +114,11 @@ public class ManageSGroups extends javax.swing.JFrame {
                 deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 120, -1));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 120, -1));
 
-        update.setBackground(new java.awt.Color(153, 204, 255));
+        update.setBackground(new java.awt.Color(0, 153, 255));
+        update.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        update.setForeground(new java.awt.Color(255, 255, 255));
         update.setText("Upade");
         update.setBorderPainted(false);
         update.addActionListener(new java.awt.event.ActionListener() {
@@ -140,11 +126,81 @@ public class ManageSGroups extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 120, -1));
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 120, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 530));
+        jLabel2.setText("Academic Year Semester");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+
+        jLabel3.setText("Programme");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+
+        jLabel4.setText("Group No");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+
+        groupno.setEditable(true);
+        groupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        groupno.setFocusable(false);
+        jPanel1.add(groupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 170, -1));
+
+        program.setEditable(true);
+        program.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "CS" }));
+        program.setFocusable(false);
+        jPanel1.add(program, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 170, -1));
+        jPanel1.add(semester, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 170, -1));
+
+        subgroupno.setEditable(true);
+        subgroupno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        subgroupno.setFocusable(false);
+        jPanel1.add(subgroupno, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 170, -1));
+
+        jLabel5.setText("Sub Group No");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
+
+        jLabel6.setText("Group ID");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, -1, -1));
+
+        jLabel7.setText("Sub Group ID");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
+        jPanel1.add(subgroupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 170, -1));
+        jPanel1.add(groupid, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 170, -1));
+
+        windowTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        windowTopBar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+        windowTopBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                windowTopBarMouseDragged(evt);
+            }
+        });
+        windowTopBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                windowTopBarMousePressed(evt);
+            }
+        });
+        windowTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_Exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit1.setBorder(null);
+        btn_Exit1.setBorderPainted(false);
+        btn_Exit1.setContentAreaFilled(false);
+        btn_Exit1.setFocusPainted(false);
+        btn_Exit1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Exit1ActionPerformed(evt);
+            }
+        });
+        windowTopBar.add(btn_Exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 34, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Manage Student Groups");
+        windowTopBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, -1, 20));
+
+        jPanel1.add(windowTopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -183,6 +239,19 @@ public class ManageSGroups extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_updateActionPerformed
 
+    private void btn_Exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Exit1ActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_btn_Exit1ActionPerformed
+
+    private void windowTopBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMouseDragged
+        this.setWindowLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_windowTopBarMouseDragged
+
+    private void windowTopBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMousePressed
+        this.setMouseClickedLocation(evt.getX(), evt.getY());
+    }//GEN-LAST:event_windowTopBarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -219,6 +288,7 @@ public class ManageSGroups extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Exit1;
     private javax.swing.JButton clear;
     private javax.swing.JButton delete;
     private javax.swing.JTextField groupid;
@@ -238,6 +308,7 @@ public class ManageSGroups extends javax.swing.JFrame {
     private javax.swing.JTextField subgroupid;
     private javax.swing.JComboBox<String> subgroupno;
     private javax.swing.JButton update;
+    private javax.swing.JPanel windowTopBar;
     // End of variables declaration//GEN-END:variables
 
     private void loadData() {

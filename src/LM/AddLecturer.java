@@ -5,6 +5,7 @@
  */
 package LM;
 
+import Main.MainWindow;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -17,13 +18,24 @@ public class AddLecturer extends javax.swing.JFrame {
     /**
      * Creates new form AddLecturer
      */
-    public AddLecturer() {
+    
+      private MainWindow mainWindow;
+
+  
+    public AddLecturer(MainWindow mainWindow) {
         initComponents();
         loadFaculty();
         loadCampus();
         loadLevel();
         loadDepartment();
         loadBuilding();
+       
+        this.mainWindow = mainWindow;
+        
+    }
+    
+    public AddLecturer() {
+       
     }
 
     /**
@@ -35,85 +47,69 @@ public class AddLecturer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        lecname = new javax.swing.JTextField();
-        lfaculty = new javax.swing.JComboBox<>();
-        lcampus = new javax.swing.JComboBox<>();
-        llevel = new javax.swing.JComboBox<>();
-        lempid = new javax.swing.JTextField();
-        ldep = new javax.swing.JComboBox<>();
-        lbuilding = new javax.swing.JComboBox<>();
         lrank = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        lbuilding = new javax.swing.JComboBox<>();
+        ldep = new javax.swing.JComboBox<>();
+        lempid = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        llevel = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        lcampus = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        lfaculty = new javax.swing.JComboBox<>();
+        lecname = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Add Lecturer");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 112, -1, -1));
+        AddLec.setBackground(new java.awt.Color(255, 255, 255));
+        AddLec.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Lecturer Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 186, -1, -1));
+        AddLec.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 186, -1, 40));
 
-        jLabel3.setText("Faculty");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 225, -1, -1));
-
-        jLabel4.setText("Campus");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 265, -1, -1));
-
-        jLabel5.setText("Level");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 305, -1, -1));
-
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Employee ID");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 186, -1, -1));
+        AddLec.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 120, 40));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Department");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 225, -1, -1));
+        AddLec.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 120, 40));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText(" Building");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 265, -1, -1));
+        AddLec.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 110, 40));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Rank");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 305, -1, -1));
-        getContentPane().add(lecname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 183, 188, -1));
+        AddLec.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 100, 40));
 
-        getContentPane().add(lfaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 221, 188, -1));
+        lrank.setFocusable(false);
+        AddLec.add(lrank, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 330, 40));
 
-        getContentPane().add(lcampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 261, 188, -1));
+        lbuilding.setEditable(true);
+        lbuilding.setFocusable(false);
+        AddLec.add(lbuilding, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 330, 40));
 
-        getContentPane().add(llevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 301, 188, -1));
-        getContentPane().add(lempid, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 183, 177, -1));
+        ldep.setEditable(true);
+        ldep.setFocusable(false);
+        AddLec.add(ldep, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 330, 40));
+        AddLec.add(lempid, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 330, 40));
 
-        getContentPane().add(ldep, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 221, 180, -1));
-
-        getContentPane().add(lbuilding, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 261, 180, -1));
-
-        lrank.setEditable(false);
-        getContentPane().add(lrank, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 302, 180, -1));
-
-        jButton1.setBackground(new java.awt.Color(0, 204, 204));
-        jButton1.setText("Generate Rank");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 385, -1, -1));
-
-        jButton2.setBackground(new java.awt.Color(255, 204, 255));
+        jButton2.setBackground(java.awt.Color.red);
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Clear");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -121,9 +117,23 @@ public class AddLecturer extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 385, 90, -1));
+        AddLec.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 640, 190, 40));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 153));
+        jButton1.setBackground(new java.awt.Color(0, 153, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Generate Rank");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        AddLec.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 640, 190, 40));
+
+        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Save");
         jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -131,22 +141,50 @@ public class AddLecturer extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 385, 90, -1));
+        AddLec.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 640, 190, 40));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Level");
+        AddLec.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 50, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
+        llevel.setEditable(true);
+        llevel.setFocusable(false);
+        AddLec.add(llevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 330, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 610));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Campus");
+        AddLec.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 300, 70, 40));
+
+        lcampus.setEditable(true);
+        lcampus.setFocusable(false);
+        AddLec.add(lcampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 330, 40));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Faculty");
+        AddLec.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 240, 60, 40));
+
+        lfaculty.setEditable(true);
+        lfaculty.setFocusable(false);
+        AddLec.add(lfaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 330, 40));
+        AddLec.add(lecname, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 330, 40));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Add Lecturer");
+        AddLec.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 180, -1));
+
+        jButton7.setBackground(new java.awt.Color(0, 204, 255));
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("View");
+        jButton7.setBorderPainted(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        AddLec.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 640, 190, 40));
+
+        getContentPane().add(AddLec, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -214,45 +252,54 @@ public class AddLecturer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        //View Button
+        Managelecturers al = new Managelecturers();
+        al.setVisible(true);
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddLecturer().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(AddLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(AddLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(AddLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(AddLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new AddLecturer().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public final javax.swing.JPanel AddLec = new javax.swing.JPanel();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -262,7 +309,6 @@ public class AddLecturer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> lbuilding;
     private javax.swing.JComboBox<String> lcampus;
     private javax.swing.JComboBox<String> ldep;

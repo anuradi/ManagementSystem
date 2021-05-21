@@ -17,6 +17,8 @@ import javax.swing.table.DefaultTableModel;
 public class ManageSession extends javax.swing.JFrame {
 
     String sessionid = "";
+    private int xAxisMousePoint;
+    private int yAxisMousePoint;
 
     /**
      * Creates new form ManageSession
@@ -29,7 +31,13 @@ public class ManageSession extends javax.swing.JFrame {
         loadGroup();
         loadSubject();
     }
-
+    protected void setMouseClickedLocation(int x, int y) {
+        this.xAxisMousePoint = x;
+        this.yAxisMousePoint = y;
+    }
+     protected void setWindowLocation(int x, int y) {
+        this.setLocation(x - xAxisMousePoint, y - yAxisMousePoint);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,35 +47,33 @@ public class ManageSession extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        snoofstd = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        sduration = new javax.swing.JTextField();
         sgroup = new javax.swing.JComboBox<>();
         stag = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         ssubject = new javax.swing.JComboBox<>();
-        scode = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         slecture = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btn_Exit = new javax.swing.JButton();
+        windowTopBar = new javax.swing.JPanel();
+        btn_Exit1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        sduration = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        snoofstd = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        scode = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Manage Session");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 56, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,23 +90,21 @@ public class ManageSession extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 109, 561, 151));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 50, 561, 210));
 
-        jLabel7.setText("No Of Students");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 331, -1, -1));
-        getContentPane().add(snoofstd, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 328, 186, -1));
-
-        jLabel8.setText("Duration");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 371, -1, -1));
-        getContentPane().add(sduration, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 368, 186, -1));
-
+        sgroup.setEditable(true);
+        sgroup.setFocusable(false);
         getContentPane().add(sgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 367, 188, -1));
 
+        stag.setEditable(true);
+        stag.setFocusable(false);
         getContentPane().add(stag, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 327, 188, -1));
 
         jLabel2.setText("Select Lecturer");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 291, -1, -1));
 
+        ssubject.setEditable(true);
+        ssubject.setFocusable(false);
         ssubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ssubjectActionPerformed(evt);
@@ -108,27 +112,26 @@ public class ManageSession extends javax.swing.JFrame {
         });
         getContentPane().add(ssubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 407, 188, -1));
 
-        scode.setEditable(false);
-        getContentPane().add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 288, 186, -1));
-
         jLabel4.setText("Select Group");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 371, -1, -1));
 
         jLabel3.setText("Select Tag");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 331, -1, -1));
 
+        slecture.setEditable(true);
+        slecture.setFocusable(false);
         getContentPane().add(slecture, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 287, 188, -1));
 
         jLabel5.setText("Select Subject");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 411, -1, -1));
 
-        jLabel6.setText("Subject Code");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 291, -1, -1));
-
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
+        jButton1.setBackground(new java.awt.Color(0, 153, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Update");
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +141,9 @@ public class ManageSession extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 120, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 102));
+        jButton2.setBackground(java.awt.Color.red);
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Delete");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -148,20 +153,54 @@ public class ManageSession extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 120, -1));
 
-        btn_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
-        btn_Exit.setBorder(null);
-        btn_Exit.setBorderPainted(false);
-        btn_Exit.setContentAreaFilled(false);
-        btn_Exit.setFocusPainted(false);
-        btn_Exit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
-        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ExitActionPerformed(evt);
+        windowTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        windowTopBar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+        windowTopBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                windowTopBarMouseDragged(evt);
             }
         });
-        jPanel1.add(btn_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 40, 25));
+        windowTopBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                windowTopBarMousePressed(evt);
+            }
+        });
+        windowTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 610));
+        btn_Exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit1.setBorder(null);
+        btn_Exit1.setBorderPainted(false);
+        btn_Exit1.setContentAreaFilled(false);
+        btn_Exit1.setFocusPainted(false);
+        btn_Exit1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Exit1ActionPerformed(evt);
+            }
+        });
+        windowTopBar.add(btn_Exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 0, 34, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Manage Session");
+        windowTopBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, -1, 20));
+
+        jPanel1.add(windowTopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
+        jPanel1.add(sduration, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 186, -1));
+
+        jLabel8.setText("Duration");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
+        jPanel1.add(snoofstd, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 186, -1));
+
+        jLabel7.setText("No Of Students");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
+
+        scode.setEditable(false);
+        jPanel1.add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 186, -1));
+
+        jLabel6.setText("Subject Code");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
         setLocationRelativeTo(null);
@@ -249,10 +288,18 @@ public class ManageSession extends javax.swing.JFrame {
          deleteSession();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
-        
+    private void btn_Exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Exit1ActionPerformed
+
         this.dispose();
-    }//GEN-LAST:event_btn_ExitActionPerformed
+    }//GEN-LAST:event_btn_Exit1ActionPerformed
+
+    private void windowTopBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMouseDragged
+        this.setWindowLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_windowTopBarMouseDragged
+
+    private void windowTopBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMousePressed
+        this.setMouseClickedLocation(evt.getX(), evt.getY());
+    }//GEN-LAST:event_windowTopBarMousePressed
 
     /**
      * @param args the command line arguments
@@ -290,7 +337,7 @@ public class ManageSession extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Exit;
+    private javax.swing.JButton btn_Exit1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -311,6 +358,7 @@ public class ManageSession extends javax.swing.JFrame {
     private javax.swing.JTextField snoofstd;
     private javax.swing.JComboBox<String> ssubject;
     private javax.swing.JComboBox<String> stag;
+    private javax.swing.JPanel windowTopBar;
     // End of variables declaration//GEN-END:variables
        private void loadTableData() {
         try {

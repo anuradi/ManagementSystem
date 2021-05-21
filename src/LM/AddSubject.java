@@ -5,6 +5,7 @@
  */
 package LM;
 
+import Main.MainWindow;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +17,17 @@ public class AddSubject extends javax.swing.JFrame {
     /**
      * Creates new form AddSubject
      */
-    public AddSubject() {
+    
+      private MainWindow mainWindow;
+
+  
+    public AddSubject(MainWindow mainWindow) {
         initComponents();
+        this.mainWindow = mainWindow;
+        
+    }
+    public AddSubject() {
+       
     }
 
     /**
@@ -48,62 +58,76 @@ public class AddSubject extends javax.swing.JFrame {
         stutorialh = new javax.swing.JSpinner();
         slabh = new javax.swing.JSpinner();
         sevoh = new javax.swing.JSpinner();
-        jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddSub.setBackground(new java.awt.Color(255, 255, 255));
+        AddSub.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Add Subject");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 47, -1, -1));
+        AddSub.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Offered Year");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 99, -1, -1));
+        AddSub.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 240, 40));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Offered Semester");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 138, -1, -1));
+        AddSub.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 150, 40));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Subject Name");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 178, -1, -1));
+        AddSub.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 230, 40));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Subject Code");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 216, -1, -1));
+        AddSub.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 230, 40));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Number of Lecture Hours");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 99, -1, -1));
+        AddSub.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 240, 40));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Number of Tutorial Hours");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 138, -1, -1));
+        AddSub.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 240, 40));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Number of Lab Hours");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 178, -1, -1));
+        AddSub.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 240, 40));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Number of Ecolution Hours");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 216, -1, -1));
+        AddSub.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 230, 40));
 
-        sofferyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
-        getContentPane().add(sofferyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 96, 139, -1));
-        getContentPane().add(sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 175, 139, -1));
-        getContentPane().add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 213, 139, -1));
+        sofferyear.setEditable(true);
+        sofferyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st year", "2nd year", "3rd year", "4th year" }));
+        sofferyear.setFocusable(false);
+        AddSub.add(sofferyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 330, 40));
+        AddSub.add(sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 330, 40));
+        AddSub.add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 330, 40));
 
+        sfirstsem.setBackground(new java.awt.Color(255, 255, 255));
         sfirstsem.setSelected(true);
         sfirstsem.setText("First");
-        getContentPane().add(sfirstsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 134, -1, -1));
+        AddSub.add(sfirstsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 90, 40));
 
+        ssecondsem.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(ssecondsem);
         ssecondsem.setText("Second");
-        getContentPane().add(ssecondsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 134, -1, -1));
-        getContentPane().add(slech, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 96, 50, -1));
-        getContentPane().add(stutorialh, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 135, 50, -1));
-        getContentPane().add(slabh, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 175, 50, -1));
-        getContentPane().add(sevoh, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 213, 50, -1));
+        AddSub.add(ssecondsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 90, 40));
+        AddSub.add(slech, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 330, 40));
+        AddSub.add(stutorialh, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 330, 40));
+        AddSub.add(slabh, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 330, 40));
+        AddSub.add(sevoh, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 510, 330, 40));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setBackground(new java.awt.Color(255, 255, 153));
+        jButton2.setBackground(new java.awt.Color(0, 204, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Save");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -111,9 +135,11 @@ public class AddSubject extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 100, -1));
+        AddSub.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 640, 190, 40));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 255));
+        jButton1.setBackground(java.awt.Color.red);
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Clear");
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -121,9 +147,21 @@ public class AddSubject extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 100, -1));
+        AddSub.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 640, 190, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
+        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("View");
+        jButton3.setBorderPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        AddSub.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, 190, 40));
+
+        getContentPane().add(AddSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,6 +199,11 @@ public class AddSubject extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ManageSubject ms = new ManageSubject();
+        ms.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -197,9 +240,11 @@ public class AddSubject extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public final javax.swing.JPanel AddSub = new javax.swing.JPanel();
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -209,7 +254,6 @@ public class AddSubject extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField scode;
     private javax.swing.JSpinner sevoh;
     private javax.swing.JRadioButton sfirstsem;

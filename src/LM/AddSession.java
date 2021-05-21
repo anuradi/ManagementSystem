@@ -5,6 +5,7 @@
  */
 package LM;
 
+import Main.MainWindow;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -17,12 +18,21 @@ public class AddSession extends javax.swing.JFrame {
     /**
      * Creates new form AddSession
      */
-    public AddSession() {
+      private MainWindow mainWindow;
+
+  
+    public AddSession(MainWindow mainWindow) {
         initComponents();
         loadLecturer();
         loadTag();
         loadGroup();
         loadSubject();
+        this.mainWindow = mainWindow;
+        
+    }
+    
+    public AddSession() {
+        
     }
 
     /**
@@ -49,63 +59,79 @@ public class AddSession extends javax.swing.JFrame {
         sgroup = new javax.swing.JComboBox<>();
         sduration = new javax.swing.JTextField();
         snoofstd = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
         clear = new javax.swing.JButton();
         submit = new javax.swing.JButton();
-        btn_Exit = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Add Session");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 86, -1, -1));
+        AddSess.setBackground(new java.awt.Color(255, 255, 255));
+        AddSess.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Add Session");
+        AddSess.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Select Tag");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, -1, -1));
+        AddSess.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 140, 40));
 
         scode.setEditable(false);
-        getContentPane().add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 122, 179, -1));
+        AddSess.add(scode, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 330, 40));
 
+        ssubject.setEditable(true);
+        ssubject.setFocusable(false);
         ssubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ssubjectActionPerformed(evt);
             }
         });
-        getContentPane().add(ssubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 241, 188, -1));
+        AddSess.add(ssubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 330, 40));
 
-        getContentPane().add(stag, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 161, 188, -1));
+        stag.setEditable(true);
+        stag.setFocusable(false);
+        AddSess.add(stag, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 330, 40));
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Duration");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 205, -1, -1));
+        AddSess.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 140, 40));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("No Of Students");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 165, -1, -1));
+        AddSess.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 140, 40));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Subject Code");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 125, -1, -1));
+        AddSess.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 140, 40));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Select Subject");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 245, -1, -1));
+        AddSess.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 140, 40));
 
-        getContentPane().add(slecture, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 121, 188, -1));
+        slecture.setEditable(true);
+        slecture.setFocusable(false);
+        AddSess.add(slecture, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 330, 40));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Select Group");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 205, -1, -1));
+        AddSess.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 140, 40));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Select Lecturer");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 125, -1, -1));
+        AddSess.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 140, 40));
 
-        getContentPane().add(sgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 201, 188, -1));
-        getContentPane().add(sduration, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 202, 179, -1));
-        getContentPane().add(snoofstd, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 162, 179, -1));
+        sgroup.setEditable(true);
+        sgroup.setFocusable(false);
+        AddSess.add(sgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 330, 40));
+        AddSess.add(sduration, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 330, 40));
+        AddSess.add(snoofstd, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 330, 40));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        clear.setBackground(new java.awt.Color(255, 204, 255));
+        clear.setBackground(java.awt.Color.red);
+        clear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        clear.setForeground(new java.awt.Color(255, 255, 255));
         clear.setText("Clear");
         clear.setBorderPainted(false);
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -113,32 +139,33 @@ public class AddSession extends javax.swing.JFrame {
                 clearActionPerformed(evt);
             }
         });
-        jPanel1.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 110, -1));
+        AddSess.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 620, 190, 40));
 
-        submit.setBackground(new java.awt.Color(255, 255, 0));
-        submit.setText(" Submit");
+        submit.setBackground(new java.awt.Color(0, 204, 255));
+        submit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        submit.setForeground(new java.awt.Color(255, 255, 255));
+        submit.setText("Save");
         submit.setBorderPainted(false);
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitActionPerformed(evt);
             }
         });
-        jPanel1.add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 110, -1));
+        AddSess.add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 190, 40));
 
-        btn_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
-        btn_Exit.setBorder(null);
-        btn_Exit.setBorderPainted(false);
-        btn_Exit.setContentAreaFilled(false);
-        btn_Exit.setFocusPainted(false);
-        btn_Exit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
-        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(new java.awt.Color(0, 204, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("View");
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ExitActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 40, 25));
+        AddSess.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 190, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 610));
+        getContentPane().add(AddSess, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
 
         pack();
         setLocationRelativeTo(null);
@@ -212,49 +239,50 @@ public class AddSession extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ssubjectActionPerformed
 
-    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
-
-        this.dispose();
-    }//GEN-LAST:event_btn_ExitActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ManageSession ud = new ManageSession();
+        ud.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddSession().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(AddSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(AddSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(AddSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(AddSession.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new AddSession().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Exit;
+    public final javax.swing.JPanel AddSess = new javax.swing.JPanel();
     private javax.swing.JButton clear;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -263,7 +291,6 @@ public class AddSession extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField scode;
     private javax.swing.JTextField sduration;
     private javax.swing.JComboBox<String> sgroup;

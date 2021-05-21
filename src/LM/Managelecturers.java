@@ -17,6 +17,8 @@ import javax.swing.table.DefaultTableModel;
 public class Managelecturers extends javax.swing.JFrame {
 
     String lecid = "";
+    private int xAxisMousePoint;
+    private int yAxisMousePoint;
 
     /**
      * Creates new form Managelecturers
@@ -30,6 +32,13 @@ public class Managelecturers extends javax.swing.JFrame {
         loadBuilding();
         loadTableData();
     }
+        protected void setMouseClickedLocation(int x, int y) {
+        this.xAxisMousePoint = x;
+        this.yAxisMousePoint = y;
+    }
+     protected void setWindowLocation(int x, int y) {
+        this.setLocation(x - xAxisMousePoint, y - yAxisMousePoint);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,7 +49,6 @@ public class Managelecturers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -62,13 +70,14 @@ public class Managelecturers extends javax.swing.JFrame {
         update = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        windowTopBar = new javax.swing.JPanel();
+        btn_Exit1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Manage Lecturers");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 57, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,8 +100,12 @@ public class Managelecturers extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 339, -1, -1));
         getContentPane().add(lempid, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 297, 192, -1));
 
+        llevel.setEditable(true);
+        llevel.setFocusable(false);
         getContentPane().add(llevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 415, 188, -1));
 
+        lfaculty.setEditable(true);
+        lfaculty.setFocusable(false);
         getContentPane().add(lfaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 335, 188, -1));
         getContentPane().add(lecname, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 297, 188, -1));
 
@@ -114,19 +127,27 @@ public class Managelecturers extends javax.swing.JFrame {
         jLabel5.setText("Level");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 419, -1, -1));
 
+        lbuilding.setEditable(true);
+        lbuilding.setFocusable(false);
         getContentPane().add(lbuilding, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 375, 195, -1));
 
         jLabel4.setText("Campus");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 379, -1, -1));
 
+        ldep.setEditable(true);
+        ldep.setFocusable(false);
         getContentPane().add(ldep, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 335, 195, -1));
 
         jLabel2.setText("Lecturer Name");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
 
+        lcampus.setEditable(true);
+        lcampus.setFocusable(false);
         getContentPane().add(lcampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 375, 188, -1));
 
-        update.setBackground(new java.awt.Color(153, 204, 255));
+        update.setBackground(new java.awt.Color(0, 153, 255));
+        update.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        update.setForeground(new java.awt.Color(255, 255, 255));
         update.setText("Update");
         update.setBorderPainted(false);
         update.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +157,9 @@ public class Managelecturers extends javax.swing.JFrame {
         });
         getContentPane().add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 488, 120, -1));
 
-        delete.setBackground(new java.awt.Color(255, 204, 102));
+        delete.setBackground(java.awt.Color.red);
+        delete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setText("Delete");
         delete.setBorderPainted(false);
         delete.addActionListener(new java.awt.event.ActionListener() {
@@ -146,22 +169,47 @@ public class Managelecturers extends javax.swing.JFrame {
         });
         getContentPane().add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 488, 120, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
+        windowTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        windowTopBar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+        windowTopBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                windowTopBarMouseDragged(evt);
+            }
+        });
+        windowTopBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                windowTopBarMousePressed(evt);
+            }
+        });
+        windowTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_Exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit1.setBorder(null);
+        btn_Exit1.setBorderPainted(false);
+        btn_Exit1.setContentAreaFilled(false);
+        btn_Exit1.setFocusPainted(false);
+        btn_Exit1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Exit1ActionPerformed(evt);
+            }
+        });
+        windowTopBar.add(btn_Exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 0, 34, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Manage Lecturers");
+        windowTopBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, -1, 20));
+
+        jPanel1.add(windowTopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -235,6 +283,19 @@ public class Managelecturers extends javax.swing.JFrame {
         deleteLectures();
     }//GEN-LAST:event_deleteActionPerformed
 
+    private void btn_Exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Exit1ActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_btn_Exit1ActionPerformed
+
+    private void windowTopBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMouseDragged
+        this.setWindowLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_windowTopBarMouseDragged
+
+    private void windowTopBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMousePressed
+        this.setMouseClickedLocation(evt.getX(), evt.getY());
+    }//GEN-LAST:event_windowTopBarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +332,7 @@ public class Managelecturers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Exit1;
     private javax.swing.JButton delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -293,6 +355,7 @@ public class Managelecturers extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> llevel;
     private javax.swing.JTextField lrank;
     private javax.swing.JButton update;
+    private javax.swing.JPanel windowTopBar;
     // End of variables declaration//GEN-END:variables
 
     private void loadFaculty() {

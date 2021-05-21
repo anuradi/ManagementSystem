@@ -17,6 +17,9 @@ import javax.swing.table.DefaultTableModel;
 public class ManageSessionRooms extends javax.swing.JFrame {
 
     String srid="";
+    private int xAxisMousePoint;
+    private int yAxisMousePoint;
+ 
     /**
      * Creates new form ManageSessionRooms
      */
@@ -26,7 +29,15 @@ public class ManageSessionRooms extends javax.swing.JFrame {
         loadSessions();
         loadRooms();
     }
-
+  
+  
+        protected void setMouseClickedLocation(int x, int y) {
+        this.xAxisMousePoint = x;
+        this.yAxisMousePoint = y;
+    }
+     protected void setWindowLocation(int x, int y) {
+        this.setLocation(x - xAxisMousePoint, y - yAxisMousePoint);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,23 +47,23 @@ public class ManageSessionRooms extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        asession = new javax.swing.JComboBox<>();
-        aroom = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        windowTopBar = new javax.swing.JPanel();
+        btn_Exit1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        asession = new javax.swing.JComboBox<>();
+        aroom = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Manage Session Rooms");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 56, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,17 +82,13 @@ public class ManageSessionRooms extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 91, 555, 148));
 
-        jLabel2.setText("Select Session");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 275, -1, -1));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setText("Select Room");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 317, -1, -1));
-
-        getContentPane().add(asession, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 271, 239, -1));
-
-        getContentPane().add(aroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 313, 239, -1));
-
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
+        jButton1.setBackground(new java.awt.Color(0, 153, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Update");
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -89,9 +96,11 @@ public class ManageSessionRooms extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 140, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 140, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 102));
+        jButton2.setBackground(java.awt.Color.red);
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Delete");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -99,24 +108,59 @@ public class ManageSessionRooms extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 140, -1));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 140, -1));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+        windowTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        windowTopBar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+        windowTopBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                windowTopBarMouseDragged(evt);
+            }
+        });
+        windowTopBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                windowTopBarMousePressed(evt);
+            }
+        });
+        windowTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
+        btn_Exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_1.png"))); // NOI18N
+        btn_Exit1.setBorder(null);
+        btn_Exit1.setBorderPainted(false);
+        btn_Exit1.setContentAreaFilled(false);
+        btn_Exit1.setFocusPainted(false);
+        btn_Exit1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close_2.png"))); // NOI18N
+        btn_Exit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Exit1ActionPerformed(evt);
+            }
+        });
+        windowTopBar.add(btn_Exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 0, 34, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Manage Session Rooms");
+        windowTopBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, -1, 20));
+
+        jPanel2.add(windowTopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 30));
+
+        asession.setEditable(true);
+        asession.setFocusable(false);
+        jPanel2.add(asession, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 239, -1));
+
+        aroom.setEditable(true);
+        aroom.setFocusable(false);
+        jPanel2.add(aroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 239, -1));
+
+        jLabel3.setText("Select Room");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
+
+        jLabel2.setText("Select Session");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -161,6 +205,19 @@ public class ManageSessionRooms extends javax.swing.JFrame {
         deleteSessionRoom();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btn_Exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Exit1ActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_btn_Exit1ActionPerformed
+
+    private void windowTopBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMouseDragged
+        this.setWindowLocation(evt.getXOnScreen(), evt.getYOnScreen());
+    }//GEN-LAST:event_windowTopBarMouseDragged
+
+    private void windowTopBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_windowTopBarMousePressed
+        this.setMouseClickedLocation(evt.getX(), evt.getY());
+    }//GEN-LAST:event_windowTopBarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -199,6 +256,7 @@ public class ManageSessionRooms extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> aroom;
     private javax.swing.JComboBox<String> asession;
+    private javax.swing.JButton btn_Exit1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -207,6 +265,7 @@ public class ManageSessionRooms extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JPanel windowTopBar;
     // End of variables declaration//GEN-END:variables
 
     private void loadTableData() {
